@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Link extends Model
 {
-    use HasFactory;
+    protected $guarded = [
+        'created_at',
+        'updated_at',
+    ];
+
+    public function bookmaker()
+    {
+        return $this->belongsTo('App\Models\Bookmaker');
+    }
 }
