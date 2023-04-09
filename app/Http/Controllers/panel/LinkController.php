@@ -24,7 +24,7 @@ class LinkController extends Controller
      */
     public function index(): Response
     {
-        return response()->view('links.index', [
+        return response()->view('layouts.panel.links.index', [
             'links' => Link::orderBy('updated_at', 'desc')->get(),
             'bookmaker' => Bookmaker::all(),
         ]);
@@ -37,7 +37,7 @@ class LinkController extends Controller
     {
         $bookmakers = Bookmaker::all();
 
-        return response()->view('links.form', compact('bookmakers'));
+        return response()->view('layouts.panel.links.form', compact('bookmakers'));
     }
 
     /**
@@ -52,7 +52,7 @@ class LinkController extends Controller
         if($create) {
             // add flash for the success notification
             session()->flash('notif.success', 'Link created successfully!');
-            return redirect()->route('links.index');
+            return redirect()->route('layouts.panel.links.index');
         }
 
         return abort(500);
@@ -63,7 +63,7 @@ class LinkController extends Controller
      */
     public function show(string $id): Response
     {
-        return response()->view('links.show', [
+        return response()->view('layouts.panel.links.show', [
             'link' => Link::findOrFail($id),
         ]);
     }
@@ -73,7 +73,7 @@ class LinkController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('links.form', [
+        return response()->view('layouts.panel.links.form', [
             'link' => Link::findOrFail($id),
             'bookmakers' => Bookmaker::all(),
         ]);
@@ -92,7 +92,7 @@ class LinkController extends Controller
         if($update) {
             // add flash for the success notification
             session()->flash('notif.success', 'Link updated successfully!');
-            return redirect()->route('links.index');
+            return redirect()->route('layouts.panel.links.index');
         }
 
         return abort(500);
@@ -109,7 +109,7 @@ class LinkController extends Controller
 
         if($delete) {
             session()->flash('notif.success', 'Link deleted successfully!');
-            return redirect()->route('links.index');
+            return redirect()->route('layouts.panel.links.index');
         }
 
         return abort(500);

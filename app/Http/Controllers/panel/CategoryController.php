@@ -25,7 +25,7 @@ class CategoryController extends Controller
      */
     public function index(): Response
     {
-        return response()->view('categories.index', [
+        return response()->view('layouts.panel.categories.index', [
             'categories' => Category::orderBy('updated_at', 'desc')->get(),
         ]);
     }
@@ -35,7 +35,7 @@ class CategoryController extends Controller
      */
     public function create(): Response
     {
-        return response()->view('categories.form');
+        return response()->view('layouts.panel.categories.form');
     }
 
     /**
@@ -50,7 +50,7 @@ class CategoryController extends Controller
         if($create) {
             // add flash for the success notification
             session()->flash('notif.success', 'Category created successfully!');
-            return redirect()->route('categories.index');
+            return redirect()->route('layouts.panel.categories.index');
         }
 
         return abort(500);
@@ -61,7 +61,7 @@ class CategoryController extends Controller
      */
     public function show(string $id): Response
     {
-        return response()->view('categories.show', [
+        return response()->view('layouts.panel.categories.show', [
             'bookmaker' => Category::findOrFail($id),
         ]);
     }
@@ -71,7 +71,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('categories.form', [
+        return response()->view('layouts.panel.categories.form', [
             'category' => Category::findOrFail($id),
         ]);
     }
@@ -88,7 +88,7 @@ class CategoryController extends Controller
 
         if($update) {
             session()->flash('notif.success', 'Category updated successfully!');
-            return redirect()->route('categories.index');
+            return redirect()->route('layouts.panel.categories.index');
         }
 
         return abort(500);
@@ -105,7 +105,7 @@ class CategoryController extends Controller
 
         if($delete) {
             session()->flash('notif.success', 'Category deleted successfully!');
-            return redirect()->route('categories.index');
+            return redirect()->route('layouts.panel.categories.index');
         }
 
         return abort(500);

@@ -6,6 +6,7 @@ use App\Http\Controllers\panel\CategoryController;
 use App\Http\Controllers\panel\PostController;
 use App\Http\Controllers\panel\LinkController;
 use App\Http\Controllers\panel\PromoController;
+use App\Http\Controllers\panel\BookmakerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,6 +35,7 @@ Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function (){
         Route::delete('/profile', 'destroy')->name('profile.destroy');
     });
 
+    Route::resource('bookmaker', BookmakerController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('post', PostController::class);
     Route::resource('link', LinkController::class);

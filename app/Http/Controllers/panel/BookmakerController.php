@@ -23,7 +23,7 @@ class BookmakerController extends Controller
      */
     public function index(): Response
     {
-        return response()->view('bookmakers.index', [
+        return response()->view('layouts.panel.bookmakers.index', [
             'bookmakers' => Bookmaker::orderBy('updated_at', 'desc')->get(),
         ]);
     }
@@ -33,7 +33,7 @@ class BookmakerController extends Controller
      */
     public function create(): Response
     {
-        return response()->view('bookmakers.form');
+        return response()->view('layouts.panel.bookmakers.form');
     }
 
     /**
@@ -54,7 +54,7 @@ class BookmakerController extends Controller
         if($create) {
             // add flash for the success notification
             session()->flash('notif.success', 'Bookmaker created successfully!');
-            return redirect()->route('bookmakers.index');
+            return redirect()->route('layouts.panel.bookmakers.index');
         }
 
         return abort(500);
@@ -65,7 +65,7 @@ class BookmakerController extends Controller
      */
     public function show(string $id): Response
     {
-        return response()->view('bookmakers.show', [
+        return response()->view('layouts.panel.bookmakers.show', [
             'bookmaker' => Bookmaker::findOrFail($id),
         ]);
     }
@@ -75,7 +75,7 @@ class BookmakerController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('bookmakers.form', [
+        return response()->view('layouts.panel.bookmakers.form', [
             'bookmaker' => Bookmaker::findOrFail($id),
         ]);
     }
@@ -100,7 +100,7 @@ class BookmakerController extends Controller
 
         if($update) {
             session()->flash('notif.success', 'Bookmaker updated successfully!');
-            return redirect()->route('bookmakers.index');
+            return redirect()->route('layouts.panel.bookmakers.index');
         }
 
         return abort(500);
@@ -119,7 +119,7 @@ class BookmakerController extends Controller
 
         if($delete) {
             session()->flash('notif.success', 'Bookmaker deleted successfully!');
-            return redirect()->route('bookmakers.index');
+            return redirect()->route('layouts.panel.bookmakers.index');
         }
 
         return abort(500);

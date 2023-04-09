@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function index(): Response
     {
-        return response()->view('posts.index', [
+        return response()->view('layouts.panel.posts.index', [
             'posts' => Post::orderBy('updated_at', 'desc')->get(),
         ]);
     }
@@ -37,7 +37,7 @@ class PostController extends Controller
     public function create(): Response
     {
         $categories = Category::all();
-        return response()->view('posts.form' ,compact('categories'));
+        return response()->view('layouts.panel.posts.form' ,compact('categories'));
     }
 
     /**
@@ -59,7 +59,7 @@ class PostController extends Controller
         if($create) {
             // add flash for the success notification
             session()->flash('notif.success', 'Post created successfully!');
-            return redirect()->route('posts.index');
+            return redirect()->route('layouts.panel.posts.index');
         }
 
         return abort(500);
@@ -70,7 +70,7 @@ class PostController extends Controller
      */
     public function show(string $id): Response
     {
-        return response()->view('posts.show', [
+        return response()->view('layouts.panel.posts.show', [
             'post' => Post::findOrFail($id),
             'categories' => Category::all(),
         ]);
@@ -81,7 +81,7 @@ class PostController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('posts.form', [
+        return response()->view('layouts.panel.posts.form', [
             'post' => Post::findOrFail($id),
             'categories' => Category::all(),
         ]);
@@ -107,7 +107,7 @@ class PostController extends Controller
 
         if($update) {
             session()->flash('notif.success', 'Post updated successfully!');
-            return redirect()->route('posts.index');
+            return redirect()->route('layouts.panel.posts.index');
         }
 
         return abort(500);
@@ -126,7 +126,7 @@ class PostController extends Controller
 
         if($delete) {
             session()->flash('notif.success', 'Post deleted successfully!');
-            return redirect()->route('posts.index');
+            return redirect()->route('layouts.panel.posts.index');
         }
 
         return abort(500);

@@ -24,7 +24,7 @@ class PromoController extends Controller
      */
     public function index(): Response
     {
-        return response()->view('promos.index', [
+        return response()->view('layouts.panel.promos.index', [
             'promos' => Promo::orderBy('updated_at', 'desc')->get(),
         ]);
     }
@@ -36,7 +36,7 @@ class PromoController extends Controller
     {
         $bookmakers = Bookmaker::all();
 
-        return response()->view('promos.form', compact('bookmakers'));
+        return response()->view('layouts.panel.promos.form', compact('bookmakers'));
     }
 
     /**
@@ -51,7 +51,7 @@ class PromoController extends Controller
         if($create) {
             // add flash for the success notification
             session()->flash('notif.success', 'Promo created successfully!');
-            return redirect()->route('promos.index');
+            return redirect()->route('layouts.panel.promos.index');
         }
 
         return abort(500);
@@ -62,7 +62,7 @@ class PromoController extends Controller
      */
     public function show(string $id): Response
     {
-        return response()->view('promos.show', [
+        return response()->view('layouts.panel.promos.show', [
             'promo' => Promo::findOrFail($id),
         ]);
     }
@@ -72,7 +72,7 @@ class PromoController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('promos.form', [
+        return response()->view('layouts.panel.promos.form', [
             'promo' => Promo::findOrFail($id),
             'bookmakers' => Bookmaker::all(),
         ]);
@@ -90,7 +90,7 @@ class PromoController extends Controller
 
         if($update) {
             session()->flash('notif.success', 'Promo updated successfully!');
-            return redirect()->route('promos.index');
+            return redirect()->route('layouts.panel.promos.index');
         }
 
         return abort(500);
@@ -107,7 +107,7 @@ class PromoController extends Controller
 
         if($delete) {
             session()->flash('notif.success', 'Promo deleted successfully!');
-            return redirect()->route('promos.index');
+            return redirect()->route('layouts.panel.promos.index');
         }
 
         return abort(500);
