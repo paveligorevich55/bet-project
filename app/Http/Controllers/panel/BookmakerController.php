@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Bookmaker\StoreRequest;
 use App\Http\Requests\Bookmaker\UpdateRequest;
 use App\Models\Bookmaker;
+use App\Models\Link;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -25,6 +26,7 @@ class BookmakerController extends Controller
     {
         return response()->view('layouts.panel.bookmakers.index', [
             'bookmakers' => Bookmaker::orderBy('updated_at', 'desc')->get(),
+            'links' => Link::all(),
         ]);
     }
 
@@ -54,7 +56,7 @@ class BookmakerController extends Controller
         if($create) {
             // add flash for the success notification
             session()->flash('notif.success', 'Bookmaker created successfully!');
-            return redirect()->route('layouts.panel.bookmakers.index');
+            return redirect()->route('bookmaker.index');
         }
 
         return abort(500);
@@ -90,8 +92,9 @@ class BookmakerController extends Controller
 
         if ($request->hasFile('image')) {
             // delete image
-            Storage::disk('public')->delete($bookmaker->image);
-
+            if ($bookmaker->image != null){
+                Storage::disk('public')->delete($bookmaker->image);
+            }
             $filePath = Storage::disk('public')->put('images/bookmakers/images', request()->file('image'), 'public');
             $validated['image'] = $filePath;
         }
@@ -100,7 +103,7 @@ class BookmakerController extends Controller
 
         if($update) {
             session()->flash('notif.success', 'Bookmaker updated successfully!');
-            return redirect()->route('layouts.panel.bookmakers.index');
+            return redirect()->route('bookmaker.index');
         }
 
         return abort(500);
@@ -119,7 +122,7 @@ class BookmakerController extends Controller
 
         if($delete) {
             session()->flash('notif.success', 'Bookmaker deleted successfully!');
-            return redirect()->route('layouts.panel.bookmakers.index');
+            return redirect()->route('bookmaker.index');
         }
 
         return abort(500);
