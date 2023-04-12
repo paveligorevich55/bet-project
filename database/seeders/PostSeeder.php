@@ -18,6 +18,8 @@ class PostSeeder extends Seeder
         DB::table('posts')->insert([
             'title' => Str::random(10),
             'content' => Str::random(150),
+            'featured_image' => '',
+            'category_id' => '1',
         ]);
     }
 }
