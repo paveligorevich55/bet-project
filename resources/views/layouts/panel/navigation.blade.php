@@ -25,11 +25,17 @@
                 </div>
             </div>
             <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
+                <li class="flex items-center mr-2">
+                    <a href="{{route('profile.edit')}}" class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 dark:text-white">
+                        <i class="fa fa-user sm:mr-1" aria-hidden="true"></i>
+                        <span class="hidden sm:inline">Profile</span>
+                    </a>
+                </li>
                 <li class="flex items-center">
                     <form action="{{route('logout')}}" method="post">
                         @csrf
                         <a href="{{route('logout')}}" onclick="event.preventDefault();this.closest('form').submit();" class="block px-0 py-2 text-sm font-semibold transition-all ease-nav-brand text-slate-500 dark:text-white">
-                            <i class="fa fa-user sm:mr-1" aria-hidden="true"></i>
+                            <i class="fa fa-door-open sm:mr-1" aria-hidden="true"></i>
                             <span class="hidden sm:inline">Sign Out</span>
                         </a>
                     </form>

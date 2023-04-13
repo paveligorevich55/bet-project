@@ -25,7 +25,7 @@
 </head>
 <body class="m-0 font-sans text-base antialiased font-normal text-left leading-default dark:bg-slate-950 bg-gray-50 text-slate-500 dark:text-white">
 
-<aside mini="false" class="fixed inset-y-0 left-0 flex-wrap items-center justify-between block w-full p-0 my-4 overflow-y-auto transition-all duration-200 -translate-x-full bg-white border-0 shadow-none xl:ml-4 dark:bg-gray-950 ease-soft-in-out z-990 max-w-64 rounded-2xl xl:translate-x-0 xl:bg-transparent" id="sidenav-main">
+    <aside mini="false" class="fixed inset-y-0 left-0 flex-wrap items-center justify-between block w-full p-0 my-4 overflow-y-auto transition-all duration-200 -translate-x-full bg-white border-0 shadow-none xl:ml-4 dark:bg-gray-950 ease-soft-in-out z-990 max-w-64 rounded-2xl xl:translate-x-0 xl:bg-transparent" id="sidenav-main">
     <!-- header -->
 
     <div class="h-20">
@@ -304,19 +304,17 @@
     <div class="pt-4 mx-4 mt-4"></div>
 </aside>
 
-<main class="@if(Route::is('post.index')) ease-soft-in-out xl:ml-68 relative h-full max-h-screen rounded-xl transition-all duration-200 @endif
-            relative h-full max-h-screen transition-all duration-200 ease-soft-in-out xl:ml-68 rounded-xl">
+    <main class="@if(Route::is('post.index')) ease-soft-in-out xl:ml-68 relative h-full max-h-screen rounded-xl transition-all duration-200 @endif
+                relative h-full max-h-screen transition-all duration-200 ease-soft-in-out xl:ml-68 rounded-xl">
 
-    <!-- Navbar -->
-    @include('layouts.panel.navigation')
-    <!-- end Navbar -->
-    {{$slot}}
-</main>
+        <!-- Navbar -->
+        @include('layouts.panel.navigation')
+        <!-- end Navbar -->
+        {{$slot}}
+    </main>
 
-<script src="{{asset('/assets/js/plugins/chartjs.min.js')}}" async></script>
-<script src="{{asset('/assets/js/plugins/threejs.js')}}"></script>
-<script src="{{asset('/assets/js/plugins/orbit-controls.js')}}"></script>
-<script src="{{asset('/assets/js/plugins/perfect-scrollbar.min.js')}}" async></script>
-<script src="{{asset('/assets/js/soft-ui-dashboard-pro-tailwind.js?v=1.0.1')}}" async></script>
+    @stack('scripts')
+    <script src="{{asset('/assets/js/plugins/perfect-scrollbar.min.js')}}" async></script>
+    <script src="{{asset('/assets/js/soft-ui-dashboard-pro-tailwind.js')}}" async></script>
 </body>
 </html>

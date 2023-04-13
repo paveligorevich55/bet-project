@@ -426,5 +426,9 @@
             </div>
         </footer>
     </div>
-
+    @push('scripts')
+        <script src="{{asset('/assets/js/plugins/chartjs.min.js')}}" async></script>
+        <script src="{{asset('/assets/js/plugins/threejs.js')}}"></script>
+        <script src="{{asset('/assets/js/plugins/orbit-controls.js')}}"></script>
+    @endpush
 </x-app-layout>

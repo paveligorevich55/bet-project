@@ -1,5 +1,5 @@
-if (document.querySelector("[datetimepicker]")) {
-  flatpickr("[datetimepicker]", {
+if (document.querySelector('[datetimepicker]')) {
+  flatpickr('[datetimepicker]', {
     allowInput: true,
   }); // flatpickr
 }
