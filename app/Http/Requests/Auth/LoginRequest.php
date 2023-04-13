@@ -11,6 +11,18 @@ use Illuminate\Validation\ValidationException;
 
 class LoginRequest extends FormRequest
 {
+
+//    protected $loginField;
+//    protected $loginValue;
+//
+//    protected function prepareForValidation()
+//    {
+//        $this->loginField = filter_var($this->input('login'),
+//            FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+//        $this->loginValue = $this->input('login');
+//        $this->merge([$this->loginField => $this->loginValue]);
+//    }
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -28,6 +40,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => ['required', 'string', 'email'],
+//            'username' => ['required_without:email|string|exists:users,username'],
             'password' => ['required', 'string'],
         ];
     }

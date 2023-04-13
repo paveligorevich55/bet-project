@@ -150,13 +150,13 @@
                     <div class="flex flex-wrap items-center justify-center -mx-3">
                         <div class="w-4/12 max-w-full px-3 flex-0 sm:w-auto">
                             <div class="w-19 h-19 text-base ease-soft-in-out relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                                <img class="w-full shadow-soft-sm rounded-xl" src="../../../assets/img/bruce-mars.jpg" alt="bruce" />
+                                <img class="w-full shadow-soft-sm rounded-xl" src="{{'storage/'.Auth::user()->userProfile->image}}" alt="{{Auth::user()->name}}" />
                             </div>
                         </div>
                         <div class="w-8/12 max-w-full px-3 my-auto flex-0 sm:w-auto">
                             <div class="h-full">
-                                <h5 class="mb-1 font-bold dark:text-white">{{Auth::user()->name}}</h5>
-                                <p class="mb-0 font-semibold leading-normal text-sm">@if(Auth::user()->hasRole('admin'))CEO / Founder @elseif(Auth::user()->hasRole('writer')) General Writer / Co-Founder  @endif</p>
+                                <h5 class="mb-1 font-bold dark:text-white">{{Auth::user()->name . ' ' . Auth::user()->surname}}</h5>
+                                <p class="mb-0 font-semibold leading-normal text-sm">{{Auth::user()->userProfile->position}}</p>
                             </div>
                         </div>
                         <div class="flex max-w-full px-3 mt-4 sm:flex-0 shrink-0 sm:mt-0 sm:ml-auto sm:w-auto">
@@ -169,31 +169,78 @@
                         </div>
                     </div>
                 </div>
+                {{--      Basic Info          --}}
                 <div class="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border" id="basic-info">
                     <div class="p-6 mb-0 rounded-t-2xl">
                         <h5 class="dark:text-white">Basic Info</h5>
                     </div>
                     <div class="flex-auto p-6 pt-0">
-                        <div class="flex flex-wrap -mx-3 sm:col-span-2">
+                        <div class="flex flex-wrap -mx-3">
                             <div class="w-6/12 max-w-full px-3 flex-0">
                                 <label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="name">Name</label>
                                 <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
                                     <input value="{{Auth::user()->name}}" type="text" name="name" placeholder="Alec" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="flex flex-wrap -mx-3">
                             <div class="w-6/12 max-w-full px-3 flex-0">
-                                <label class="mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="Email">Email</label>
+                                <label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="surname">Last Name</label>
                                 <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
-                                    <input value="{{Auth::user()->email}}" type="email" name="Email" placeholder="example@email.com" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
+                                    <input value="{{Auth::user()->surname}}" type="text" name="surname" placeholder="Thompson" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
                                 </div>
                             </div>
                         </div>
 
+                        <div class="flex flex-wrap -mx-3">
+                            <div class="w-6/12 max-w-full px-3 flex-0">
+                                <label class="mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="username">Username</label>
+                                <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
+                                    <input value="{{Auth::user()->username}}" type="text" name="username" placeholder="" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
+                                </div>
+                            </div>
+                            <div class="w-6/12 max-w-full px-3 flex-0">
+                                <label class="mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="email">Email</label>
+                                <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
+                                    <input value="{{Auth::user()->email}}" type="email" name="email" placeholder="example@email.com" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
+                {{--      Image Upload         --}}
+                <div class="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border" id="password">
+                    <div class="p-6 mb-0 rounded-t-2xl">
+                        <h5 class="dark:text-white">Change Image</h5>
+                    </div>
+                    <div class="flex-auto p-6 pt-0">
+                        <label class="inline-block mt-3 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="Starting Files">Upload Your Image Right Here</label>
+                        <div dropzone action="/file-upload" class="dropzone focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-border px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" id="dropzone">
+                            <div class="fallback">
+                                <input name="image" type="file" multiple />
+                            </div>
+                        </div>
+                        <h5 class="mt-12 dark:text-white">Image requirements</h5>
+                        <p class="mb-2 text-slate-500 dark:text-white/60">Please follow this guide for an image:</p>
+                        <ul class="float-left pl-6 mb-0 list-disc text-slate-500">
+                            <li>
+                                <span class="leading-normal text-sm">One special characters</span>
+                            </li>
+                            <li>
+                                <span class="leading-normal text-sm">Min 6 characters</span>
+                            </li>
+                            <li>
+                                <span class="leading-normal text-sm">One number (2 are recommended)</span>
+                            </li>
+                            <li>
+                                <span class="leading-normal text-sm">Change it often</span>
+                            </li>
+                        </ul>
+                        <button href="javascript:;" class="inline-block float-right px-8 py-2 mt-16 mb-0 font-bold text-right text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs dark:bg-gradient-to-tl dark:from-slate-850 dark:to-gray-850 bg-gradient-to-tl from-gray-900 to-slate-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25">Update Image</button>
+                    </div>
+
+                </div>
+                {{--      Password          --}}
                 <div class="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border" id="password">
                     <div class="p-6 mb-0 rounded-t-2xl">
                         <h5 class="dark:text-white">Change Password</h5>
@@ -230,6 +277,7 @@
                         <button href="javascript:;" class="inline-block float-right px-8 py-2 mt-16 mb-0 font-bold text-right text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs dark:bg-gradient-to-tl dark:from-slate-850 dark:to-gray-850 bg-gradient-to-tl from-gray-900 to-slate-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25">Update Password</button>
                     </div>
                 </div>
+                {{--      Sessions       --}}
                 <div class="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border" id="sessions">
                     <div class="p-6 pb-4 rounded-t-2xl">
                         <h5 class="dark:text-white">Sessions</h5>
@@ -279,6 +327,7 @@
                         </div>
                     </div>
                 </div>
+                {{--      Delete Account          --}}
                 <div class="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border" id="delete">
                     <div class="p-6 rounded-t-2xl">
                         <h5 class="dark:text-white">Delete Account</h5>
@@ -305,6 +354,7 @@
     </div>
 
     @push('scripts')
+        <script src="../../../assets/js/plugins/dropzone.min.js"></script>
         <script src="../../../assets/js/plugins/choices.min.js"></script>
     @endpush
 
