@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 // Admin Dashboard panel Routes
 
-Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function (){
+Route::group(['prefix' => 'dashboard',  'middleware' => ['auth']], function (){
 
     Route::controller(IndexController::class)->group(function () {
         Route::get('/', 'index')->name('dashboard');
