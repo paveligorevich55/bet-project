@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->unsigned()->unique('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('image')->nullable();
-
             $table->string('position')->nullable();
             $table->timestamps();
         });

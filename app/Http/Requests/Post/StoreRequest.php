@@ -23,6 +23,7 @@ class StoreRequest extends FormRequest
             'content' => 'required',
             'featured_image' => 'required|image|mimes:jpg,jpeg,png',
             'category' => 'required',
+            'user_id' => 'required',
         ];
     }
 }

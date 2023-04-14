@@ -1,28 +1,5 @@
 <x-app-layout>
 
-    <div class="w-full px-6 mx-auto mt-6">
-        <div class="flex flex-wrap items-center -mx-3">
-            <div class="w-full max-w-full px-3 sm:flex-0 shrink-0 sm:w-8/12 lg:w-4/12">
-                <div class="relative right-0">
-                    <ul nav-pills class="relative flex flex-wrap p-1 mb-0 list-none dark:shadow-soft-dark-xl dark:bg-gray-950 rounded-xl bg-gray-50" role="tablist">
-                        <li class="z-30 flex-auto text-center">
-                            <a nav-link active class="block w-full py-1 transition-colors border-0 rounded-lg ease-soft-in-out bg-inherit bg-none dark:text-white" href="javascript:;" role="tab" aria-selected="true"> Messages </a>
-                        </li>
-                        <li class="z-30 flex-auto text-center">
-                            <a nav-link class="block w-full py-1 transition-colors border-0 rounded-lg ease-soft-in-out bg-inherit bg-none dark:text-white" href="javascript:;" role="tab" aria-selected="false"> Social </a>
-                        </li>
-                        <li class="z-30 flex-auto text-center">
-                            <a nav-link class="block w-full py-1 transition-colors border-0 rounded-lg ease-soft-in-out bg-inherit bg-none dark:text-white" href="javascript:;" role="tab" aria-selected="false"> Notifications </a>
-                        </li>
-                        <li class="z-30 flex-auto text-center">
-                            <a nav-link class="block w-full py-1 transition-colors border-0 rounded-lg ease-soft-in-out bg-inherit bg-none dark:text-white" href="javascript:;" role="tab" aria-selected="false"> Backup </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="w-full p-6 py-4 mx-auto my-4">
         <div class="flex flex-wrap mb-12 -mx-3">
             <div class="w-full max-w-full px-3 lg:flex-0 shrink-0 lg:w-3/12">
@@ -73,6 +50,27 @@
                                 <span class="leading-normal text-sm dark:text-white">Basic Info</span>
                             </a>
                         </li>
+{{--                        <li class="pt-2">--}}
+{{--                            <a href="#image" class="block px-4 py-2 transition-colors rounded-lg ease-soft-in-out text-slate-500 hover:bg-gray-200">--}}
+{{--                                <div class="inline-block mr-2 text-black fill-current h-4 w-4 stroke-none">--}}
+{{--                                    <svg class="mb-1 text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">--}}
+{{--                                        <title>settings</title>--}}
+{{--                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">--}}
+{{--                                            <g transform="translate(-2020.000000, -442.000000)" fill="#FFFFFF" fill-rule="nonzero">--}}
+{{--                                                <g transform="translate(1716.000000, 291.000000)">--}}
+{{--                                                    <g transform="translate(304.000000, 151.000000)">--}}
+{{--                                                        <polygon class="fill-slate-800" opacity="0.596981957" points="18.0883333 15.7316667 11.1783333 8.82166667 13.3333333 6.66666667 6.66666667 0 0 6.66666667 6.66666667 13.3333333 8.82166667 11.1783333 15.315 17.6716667"></polygon>--}}
+{{--                                                        <path class="fill-slate-800" d="M31.5666667,23.2333333 C31.0516667,23.2933333 30.53,23.3333333 30,23.3333333 C29.4916667,23.3333333 28.9866667,23.3033333 28.48,23.245 L22.4116667,30.7433333 L29.9416667,38.2733333 C32.2433333,40.575 35.9733333,40.575 38.275,38.2733333 L38.275,38.2733333 C40.5766667,35.9716667 40.5766667,32.2416667 38.275,29.94 L31.5666667,23.2333333 Z" opacity="0.596981957"></path>--}}
+{{--                                                        <path class="fill-slate-800" d="M33.785,11.285 L28.715,6.215 L34.0616667,0.868333333 C32.82,0.315 31.4483333,0 30,0 C24.4766667,0 20,4.47666667 20,10 C20,10.99 20.1483333,11.9433333 20.4166667,12.8466667 L2.435,27.3966667 C0.95,28.7083333 0.0633333333,30.595 0.00333333333,32.5733333 C-0.0583333333,34.5533333 0.71,36.4916667 2.11,37.89 C3.47,39.2516667 5.27833333,40 7.20166667,40 C9.26666667,40 11.2366667,39.1133333 12.6033333,37.565 L27.1533333,19.5833333 C28.0566667,19.8516667 29.01,20 30,20 C35.5233333,20 40,15.5233333 40,10 C40,8.55166667 39.685,7.18 39.1316667,5.93666667 L33.785,11.285 Z"></path>--}}
+{{--                                                    </g>--}}
+{{--                                                </g>--}}
+{{--                                            </g>--}}
+{{--                                        </g>--}}
+{{--                                    </svg>--}}
+{{--                                </div>--}}
+{{--                                <span class="leading-normal text-sm dark:text-white">Image Upload</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                         <li class="pt-2">
                             <a href="#password" class="block px-4 py-2 transition-colors rounded-lg ease-soft-in-out text-slate-500 hover:bg-gray-200">
                                 <div class="inline-block mr-2 text-black fill-current h-4 w-4 stroke-none">
@@ -150,7 +148,7 @@
                     <div class="flex flex-wrap items-center justify-center -mx-3">
                         <div class="w-4/12 max-w-full px-3 flex-0 sm:w-auto">
                             <div class="w-19 h-19 text-base ease-soft-in-out relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                                <img class="w-full shadow-soft-sm rounded-xl" src="{{'storage/'.Auth::user()->userProfile->image}}" alt="{{Auth::user()->name}}" />
+                                <img class="w-full shadow-soft-sm rounded-xl" src="{{'../storage/'.Auth::user()->userProfile->image}}" alt="{{Auth::user()->name}}" />
                             </div>
                         </div>
                         <div class="w-8/12 max-w-full px-3 my-auto flex-0 sm:w-auto">
@@ -174,69 +172,75 @@
                     <div class="p-6 mb-0 rounded-t-2xl">
                         <h5 class="dark:text-white">Basic Info</h5>
                     </div>
-                    <div class="flex-auto p-6 pt-0">
-                        <div class="flex flex-wrap -mx-3">
-                            <div class="w-6/12 max-w-full px-3 flex-0">
-                                <label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="name">Name</label>
+                    <form action="{{route('user.update', Auth::user()->id)}}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <div class="flex-auto p-6 pt-0">
+                            <div class="flex flex-wrap -mx-3">
+                                <div class="w-6/12 max-w-full px-3 flex-0">
+    {{--                                <label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="name">Name</label>--}}
+                                <x-panel.input-label for="name" :value="__('First Name')" class="mb-2 ml-1 font-bold text-xs"/>
                                 <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
-                                    <input value="{{Auth::user()->name}}" type="text" name="name" placeholder="Alec" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
+                                    <x-panel.text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="Auth::user()->name" required />
                                 </div>
                             </div>
-                            <div class="w-6/12 max-w-full px-3 flex-0">
-                                <label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="surname">Last Name</label>
+                                <div class="w-6/12 max-w-full px-3 flex-0">
+                                <x-panel.input-label for="surname" :value="__('Last Name')" class="mb-2 ml-1 font-bold text-xs"/>
                                 <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
-                                    <input value="{{Auth::user()->surname}}" type="text" name="surname" placeholder="Thompson" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
+                                    <x-panel.text-input id="surname" class="block mt-1 w-full" type="text" name="surname" :value="Auth::user()->surname" required />
+                                </div>
+                        </div>
+                            </div>
+                            <div class="flex flex-wrap -mx-3">
+                                <div class="w-6/12 max-w-full px-3 flex-0">
+                                    <x-panel.input-label for="username" :value="__('Username')" class="mt-6 mb-2 ml-1 font-bold text-xs"/>
+                                    <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
+                                        <x-panel.text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="Auth::user()->username" required />
+                                    </div>
+                                </div>
+                                <div class="w-6/12 max-w-full px-3 flex-0">
+                                    <x-panel.input-label for="email" :value="__('Email')" class="mt-6 mb-2 ml-1 font-bold text-xs"/>
+                                    <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
+                                        <x-panel.text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="Auth::user()->email" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap -mx-3">
+                                <div class="w-full px-3 text-right">
+                                    <button type="submit" href="javascript:;" class="inline-block float-right px-8 py-2 mt-16 mb-0 font-bold text-right text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs dark:bg-gradient-to-tl dark:from-slate-850 dark:to-gray-850 bg-gradient-to-tl from-gray-900 to-slate-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25">
+                                        {{__('Update User')}}</button>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="flex flex-wrap -mx-3">
-                            <div class="w-6/12 max-w-full px-3 flex-0">
-                                <label class="mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="username">Username</label>
-                                <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
-                                    <input value="{{Auth::user()->username}}" type="text" name="username" placeholder="" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
-                                </div>
-                            </div>
-                            <div class="w-6/12 max-w-full px-3 flex-0">
-                                <label class="mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="email">Email</label>
-                                <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
-                                    <input value="{{Auth::user()->email}}" type="email" name="email" placeholder="example@email.com" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
+                    </form>
                 </div>
                 {{--      Image Upload         --}}
-                <div class="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border" id="password">
+                <div class="relative flex flex-col min-w-0 mt-6 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border" id="image">
                     <div class="p-6 mb-0 rounded-t-2xl">
-                        <h5 class="dark:text-white">Change Image</h5>
+                        <h5 class="dark:text-white">{{__('Additional Information')}}</h5>
                     </div>
                     <div class="flex-auto p-6 pt-0">
-                        <label class="inline-block mt-3 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="Starting Files">Upload Your Image Right Here</label>
-                        <div dropzone action="/file-upload" class="dropzone focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-border px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" id="dropzone">
-                            <div class="fallback">
-                                <input name="image" type="file" multiple />
+                        <form action="{{route('profile.update', [Auth::user()->userProfile->id])}}" method="post" enctype="multipart/form-data">
+                            @method('PUT')
+                            @csrf
+                            <x-panel.input-label class="inline-block mb-2 ml-1 font-bold text-xs" for="image" :value="__('Upload Your Image Right Here')"/>
+                            <div class="dropzone focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-border px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" id="dropzone">
+                                <div class="fallback">
+                                    <input id="image" name="image" type="file" multiple />
+                                </div>
                             </div>
-                        </div>
-                        <h5 class="mt-12 dark:text-white">Image requirements</h5>
-                        <p class="mb-2 text-slate-500 dark:text-white/60">Please follow this guide for an image:</p>
-                        <ul class="float-left pl-6 mb-0 list-disc text-slate-500">
-                            <li>
-                                <span class="leading-normal text-sm">One special characters</span>
-                            </li>
-                            <li>
-                                <span class="leading-normal text-sm">Min 6 characters</span>
-                            </li>
-                            <li>
-                                <span class="leading-normal text-sm">One number (2 are recommended)</span>
-                            </li>
-                            <li>
-                                <span class="leading-normal text-sm">Change it often</span>
-                            </li>
-                        </ul>
-                        <button href="javascript:;" class="inline-block float-right px-8 py-2 mt-16 mb-0 font-bold text-right text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs dark:bg-gradient-to-tl dark:from-slate-850 dark:to-gray-850 bg-gradient-to-tl from-gray-900 to-slate-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25">Update Image</button>
+                            <h5 class="mt-12 dark:text-white">{{__('Position')}}</h5>
+                            <div class="flex flex-wrap -mx-3">
+                                <div class="w-6/12 max-w-full px-3 flex-0">
+                                    <x-panel.input-label for="position" :value="__('Position')" class="mt-6 mb-2 ml-1 font-bold text-xs"/>
+                                    <div class="relative flex flex-wrap items-stretch w-full rounded-lg">
+                                        <x-panel.text-input id="position" class="block mt-1 w-full" type="text" name="position" :value="Auth::user()->userProfile->position" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" href="javascript:;" class="inline-block float-right px-8 py-2 mt-16 mb-0 font-bold text-right text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs dark:bg-gradient-to-tl dark:from-slate-850 dark:to-gray-850 bg-gradient-to-tl from-gray-900 to-slate-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25">
+                                {{__('Update Image')}}</button>
+                        </form>
                     </div>
 
                 </div>
@@ -246,35 +250,56 @@
                         <h5 class="dark:text-white">Change Password</h5>
                     </div>
                     <div class="flex-auto p-6 pt-0">
-                        <label class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="Current password">Current password</label>
-                        <div class="mb-4">
-                            <input type="password" name="Current password" placeholder="Current password" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
-                        </div>
-                        <label class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="New password">New password</label>
-                        <div class="mb-4">
-                            <input type="password" name="New password" placeholder="New password" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
-                        </div>
-                        <label class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="Confirm new password">Confirm new password</label>
-                        <div class="mb-4">
-                            <input type="password" name="Confirm new password" placeholder="Confirm password" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" />
-                        </div>
-                        <h5 class="mt-12 dark:text-white">Password requirements</h5>
-                        <p class="mb-2 text-slate-500 dark:text-white/60">Please follow this guide for a strong password:</p>
-                        <ul class="float-left pl-6 mb-0 list-disc text-slate-500">
-                            <li>
-                                <span class="leading-normal text-sm">One special characters</span>
-                            </li>
-                            <li>
-                                <span class="leading-normal text-sm">Min 6 characters</span>
-                            </li>
-                            <li>
-                                <span class="leading-normal text-sm">One number (2 are recommended)</span>
-                            </li>
-                            <li>
-                                <span class="leading-normal text-sm">Change it often</span>
-                            </li>
-                        </ul>
-                        <button href="javascript:;" class="inline-block float-right px-8 py-2 mt-16 mb-0 font-bold text-right text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs dark:bg-gradient-to-tl dark:from-slate-850 dark:to-gray-850 bg-gradient-to-tl from-gray-900 to-slate-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25">Update Password</button>
+                        <form action="{{route('password.update')}}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <label class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="current_password">Current password</label>
+                            <div class="mb-4">
+                                <x-panel.text-input id="current_password" class=""
+                                                    type="password"
+                                                    name="current_password"
+                                                    required autocomplete="current-password"
+                                                    placeholder="Current Password"
+                                />
+                            </div>
+                            <label class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="New password">New password</label>
+                            <div class="mb-4">
+                                <x-panel.text-input placeholder="New Password"
+                                                    id="password"
+                                                    class="block mt-1 w-full"
+                                                    type="password"
+                                                    name="password"
+                                                    required
+                                                    autocomplete="new-password"
+                                />
+                            </div>
+                            <label class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80" for="Confirm new password">Confirm new password</label>
+                            <div class="mb-4">
+                                <x-panel.text-input id="password_confirmation" class="block mt-1 w-full"
+                                                    type="password"
+                                                    placeholder="Confirm New Password"
+                                                    name="password_confirmation" required autocomplete="new-password" />
+                            </div>
+                            <div class="p-6 mb-0 rounded-t-2xl">
+                                <h5 class="mt-12 dark:text-white">Password requirements</h5>
+                                <p class="mb-2 text-slate-500 dark:text-white/60">Please follow this guide for a strong password:</p>
+                                <ul class="float-left pl-6 mb-0 list-disc text-slate-500">
+                                    <li>
+                                        <span class="leading-normal text-sm">One special characters</span>
+                                    </li>
+                                    <li>
+                                        <span class="leading-normal text-sm">Min 6 characters</span>
+                                    </li>
+                                    <li>
+                                        <span class="leading-normal text-sm">One number (2 are recommended)</span>
+                                    </li>
+                                    <li>
+                                        <span class="leading-normal text-sm">Change it often</span>
+                                    </li>
+                                </ul>
+                                <button type="submit" href="javascript:;" class="inline-block float-right px-8 py-2 mt-16 mb-0 font-bold text-right text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs dark:bg-gradient-to-tl dark:from-slate-850 dark:to-gray-850 bg-gradient-to-tl from-gray-900 to-slate-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25">Update Password</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 {{--      Sessions       --}}

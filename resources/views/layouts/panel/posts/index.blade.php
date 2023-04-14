@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="w-full px-6 mx-auto">
+
         <div class="min-h-75 relative mt-6 flex items-center overflow-hidden rounded-2xl bg-[url('../../assets/img/curved-images/curved0.jpg')] bg-cover bg-center p-0">
             <span class="absolute inset-y-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-purple-700 to-pink-500 opacity-60"></span>
         </div>
@@ -8,13 +8,14 @@
             <div class="flex flex-wrap -mx-3">
                 <div class="flex-none w-auto max-w-full px-3">
                     <div class="text-base ease-soft-in-out h-19 w-19 relative inline-flex items-center justify-center rounded-xl text-white transition-all duration-200">
-                        <img src="{{ asset('assets/img/bruce-mars.jpg') }}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
+                        <img src="{{'../storage/'.Auth::user()->userProfile->image}}" alt="profile_image" class="w-full shadow-soft-sm rounded-xl" />
                     </div>
                 </div>
                 <div class="flex-none w-auto max-w-full px-3 my-auto">
                     <div class="h-full">
-                        <h5 class="mb-1 dark:text-white">{{Auth::user()->name}}</h5>
-                        <p class="mb-0 font-semibold leading-normal text-sm dark:text-white dark:opacity-60">@if(Auth::user()->hasRole('admin'))CEO / Founder @elseif(Auth::user()->hasRole('writer')) General Writer / Co-Founder  @endif</p>
+                        <h5 class="mb-1 dark:text-white">{{Auth::user()->name . ' ' . Auth::user()->surname}}</h5>
+                        <p class="mb-0 font-semibold leading-normal text-sm dark:text-white dark:opacity-60">
+                            {{Auth::user()->userProfile->position}}</p>
                     </div>
                 </div>
                 <div class="w-full max-w-full px-3 mx-auto mt-4 sm:my-auto sm:mr-0 md:w-1/2 md:flex-none lg:w-4/12">
@@ -104,10 +105,10 @@
                                     <h6 class="dark:text-white">{{$post->title}}</h6>
                                     <div>
                                         <a href="javascript:;" class="relative z-20 inline-flex items-center justify-center w-6 h-6 text-white transition-all duration-200 border-2 border-white border-solid ease-soft-in-out text-xs rounded-circle hover:z-30" data-target="tooltip_trigger">
-                                            <img class="w-full rounded-circle" alt="Image placeholder" src="{{asset('assets/img/team-3.jpg')}}" />
+                                            <img class="w-full rounded-circle" alt="Image placeholder" src="{{'../storage/'.$post->user->userProfile->image}}" />
                                         </a>
                                         <div class="hidden px-2 py-1 text-white bg-black rounded-lg text-sm" id="tooltip" role="tooltip" data-popper-placement="bottom">
-                                            Elena Morison
+                                            {{$post->user->name . ' ' . $post->user->surname}}
                                             <div class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
                                         </div>
                                     </div>
@@ -149,7 +150,7 @@
                 <div class="w-full max-w-full px-3 mb-6 md:flex-0 shrink-0 md:w-6/12 lg:w-4/12">
                     <div class="relative flex flex-col h-full min-w-0 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border">
                         <div class="flex flex-col justify-center flex-auto p-6 text-center">
-                            <a href="javascript:void(0);">
+                            <a href="{{route('post.create')}}">
                                 <i class="mb-4 fa fa-plus text-slate-400"></i>
                                 <h5 class="text-slate-400">New project</h5>
                             </a>
@@ -158,7 +159,6 @@
                 </div>
             </div>
         </section>
-    </div>
 
 
 </x-app-layout>

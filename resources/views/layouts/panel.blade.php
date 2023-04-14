@@ -19,7 +19,10 @@
     <!-- Popper -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Scripts -->
+
+    @stack('styles')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 
 
 </head>
@@ -304,13 +307,18 @@
     <div class="pt-4 mx-4 mt-4"></div>
 </aside>
 
-    <main class="@if(Route::is('post.index')) ease-soft-in-out xl:ml-68 relative h-full max-h-screen rounded-xl transition-all duration-200 @endif
-                relative h-full max-h-screen transition-all duration-200 ease-soft-in-out xl:ml-68 rounded-xl">
+    <main class="relative h-full max-h-screen transition-all duration-200 ease-soft-in-out xl:ml-68 rounded-xl">
 
         <!-- Navbar -->
         @include('layouts.panel.navigation')
         <!-- end Navbar -->
-        {{$slot}}
+        <div class="w-full px-6 mx-auto">
+            {{$slot}}
+
+            @include('layouts.panel.footer')
+        </div>
+
+
     </main>
 
     @stack('scripts')

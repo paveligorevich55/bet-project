@@ -7,6 +7,7 @@ use App\Http\Controllers\panel\PostController;
 use App\Http\Controllers\panel\LinkController;
 use App\Http\Controllers\panel\PromoController;
 use App\Http\Controllers\panel\BookmakerController;
+use App\Http\Controllers\panel\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,10 +32,12 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth']], function (){
 
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile', 'edit')->name('profile.edit');
-        Route::patch('/profile', 'update')->name('profile.update');
+        Route::put('/profile/{userProfile}/update', 'update')->name('profile.update');
         Route::delete('/profile', 'destroy')->name('profile.destroy');
+//        Route::put('/profile/{userProfile}/image', 'updateImage')->name('profile.avatar-update');
     });
 
+    Route::resource('user', UserController::class);
     Route::resource('bookmaker', BookmakerController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('post', PostController::class);

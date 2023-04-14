@@ -7,24 +7,28 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+        <!-- Font Awesome Icons -->
+        <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+        <!-- Nucleo Icons -->
+        <link href="{{asset('/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
+        <link href="{{asset('/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
+        <!-- Popper -->
+        <script src="https://unpkg.com/@popperjs/core@2"></script>
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
-            <div>
-                <a href="/">
-                    <x-panel.application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
+    <body class="m-0 font-sans antialiased font-normal text-left leading-default text-base dark:bg-slate-950 bg-gray-50 text-slate-500 dark:text-white/80">
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
-        </div>
+        <main class="mt-0 transition-all duration-200 ease-soft-in-out">
+            {{$slot}}
+        </main>
+
+        <script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+        <!-- main script file  -->
+        <script src="../../../assets/js/soft-ui-dashboard-pro-tailwind.js?v=1.0.1"></script>
     </body>
 </html>
