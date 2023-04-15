@@ -8,17 +8,17 @@ var domain = "http://127.0.0.1:8000";
 if (current_page == "dashboard" || current_page == "") {
   var to_build = "./";
 } else if(root == "dashboard"){
-  var to_build = "../../";
+  var to_build = "../../../";
 }
  else {
-  var to_build = "../../";
+  var to_build = "../../../";
 }
 
 loadStylesheet(to_build + "assets/css/perfect-scrollbar.css");
 loadJS(to_build + "assets/js/perfect-scrollbar.js", true);
 
 if (document.querySelector("canvas")) {
-  loadJS(to_build + "assets/js/charts.js", false);
+  loadJS(to_build + "assets/js/charts.js", true);
 }
 
 if (document.querySelector('[data-toggle="widget-calendar"]')) {

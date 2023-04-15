@@ -33,10 +33,12 @@ class ProfileController extends Controller
 
         if ($request->hasFile('image')){
             Storage::disk('public')->delete($userProfile->image);
+
+            $filePath = Storage::disk('public')->put('images/user-profiles/images', request()->file('image'), 'public');
+            $validated['image'] = $filePath;
         }
 
-        $filePath = Storage::disk('public')->put('images/user-profiles/images', request()->file('image'), 'public');
-        $validated['image'] = $filePath;
+
 
         $update = $userProfile->update($validated);
 

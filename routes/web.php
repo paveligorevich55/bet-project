@@ -18,7 +18,12 @@ Route::get("/robots.txt", function() { return response()->file('robots.txt'); })
 
 Route::get('/', function () {
     return view('layouts.app');
-});
+})->middleware('event');
+Route::get('/back', function () {
+    return redirect()->back();
+})->middleware('event');
+
+
 
 
 

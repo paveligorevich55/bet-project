@@ -17,6 +17,8 @@ return [
 
     'driver' => 'bcrypt',
 
+    'encryption_key' => 'ROFL IS MY KEY',
+
     /*
     |--------------------------------------------------------------------------
     | Bcrypt Options

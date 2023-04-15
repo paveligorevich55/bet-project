@@ -107,7 +107,7 @@ class PostController extends Controller
 
         if($update) {
             session()->flash('notif.success', 'Post updated successfully!');
-            return redirect()->route('layouts.panel.posts.index');
+            return redirect()->back();
         }
 
         return abort(500);

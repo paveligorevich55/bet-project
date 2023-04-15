@@ -3,7 +3,7 @@
     <div class="w-full p-6 py-4 mx-auto my-4">
         <div class="flex flex-wrap mb-12 -mx-3">
             <div class="w-full max-w-full px-3 lg:flex-0 shrink-0 lg:w-3/12">
-                <div class="sticky flex flex-col min-w-0 break-words bg-white border-0 top-1/100 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border">
+                <div class="sticky flex flex-col mb-6 min-w-0 break-words bg-white border-0 top-1/100 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border">
                     <ul class="flex flex-col flex-wrap p-4 mb-0 list-none rounded-xl">
                         <li>
                             <a href="#profile" class="block px-4 py-2 transition-colors rounded-lg ease-soft-in-out text-slate-500 hover:bg-gray-200">
@@ -379,7 +379,7 @@
     </div>
 
     @push('scripts')
-        <script src="../../../assets/js/plugins/dropzone.min.js"></script>
+{{--        <script src="../../../assets/js/plugins/dropzone.min.js"></script>--}}
         <script src="../../../assets/js/plugins/choices.min.js"></script>
     @endpush
 

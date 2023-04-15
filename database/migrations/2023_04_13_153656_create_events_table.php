@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('referer')->nullable();
             $table->string('visitor_id');
             $table->string('device');
+            $table->string('system')->nullable();
             $table->timestamps();
         });
     }

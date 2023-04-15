@@ -17,7 +17,7 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'image' => 'nullable|image|mimes:jpg,jpeg,png',
-            'position' => 'string|min:3|max:20',
+            'position' => 'nullable|string|min:3|max:20',
         ];
     }
 }

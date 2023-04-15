@@ -34,6 +34,19 @@
                             <textarea id="content" class="content" name="content"></textarea>
                         </div>
 
+                        <div class="max-w-full mt-4 flex-0">
+                            <x-panel.input-label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                                                 for="catetory"
+                                                 :value="__('Category')"
+                            />
+                            <select choices-select choice name="category" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                                <option disabled selected="selected">...</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <x-panel.input-label class="inline-block mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
                                              for="Starting Files"
                                              :value="__('Starting Files')"
@@ -81,12 +94,25 @@
                                 <textarea id="content" class="content" name="content">{{$post->content}}</textarea>
                             </div>
 
+                            <div class="max-w-full mt-4 flex-0">
+                                <x-panel.input-label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                                                     for="catetory"
+                                                     :value="__('Category')"
+                                />
+                                <select choices-select choice name="category" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                                    <option disabled selected="selected">{{$post->category->name}}</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                             <x-panel.input-label class="inline-block mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
                                                  for="Starting Files"
                                                  :value="__('Starting Files')"
                             />
                             <div class="mb-4 px-2">
-                                <img src="{{'../storage/'.$post->featured_image}}" alt="{{$post->title}}">
+                                <img src="{{'../../../storage/'.$post->featured_image}}" alt="{{$post->title}}">
                             </div>
                             <div class="dropzone focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-border px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" id="dropzone">
                                 <div class="fallback">
@@ -95,7 +121,7 @@
                             </div>
                             <div class="flex justify-end mt-6">
                                 <button type="button" class="inline-block px-6 py-3 m-0 font-bold text-center uppercase align-middle transition-all bg-gray-200 border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 text-slate-800">Cancel</button>
-                                <button type="button" class="inline-block px-6 py-3 m-0 ml-2 text-xs font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer ease-soft-in leading-pro tracking-tight-soft bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85">Create Project</button>
+                                <button type="submit" class="inline-block px-6 py-3 m-0 ml-2 text-xs font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer ease-soft-in leading-pro tracking-tight-soft bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85">Edit Post</button>
                             </div>
                         </form>
                     </div>
@@ -104,6 +130,7 @@
         @endif
 
     @push('scripts')
+        <script src="{{asset('assets')}}/js/plugins/choices.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.4.1/tinymce.min.js"></script>
         <script>
             tinymce.init({
