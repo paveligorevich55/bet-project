@@ -24,7 +24,7 @@
                                         <div>
                                             <p class="mb-0 font-sans font-semibold leading-normal text-sm">Users</p>
                                             <h5 class="mb-0 font-bold dark:text-white">
-                                                {{$visitors_count}}
+                                                {{$visitorCount}}
 {{--                                                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+55%</span>--}}
                                             </h5>
                                         </div>
@@ -45,7 +45,7 @@
                                         <div>
                                             <p class="mb-0 font-sans font-semibold leading-normal text-sm">Today Visitors</p>
                                             <h5 class="mb-0 font-bold dark:text-white">
-                                                {{$today_visits}}
+                                                {{$todayEventsCount}}
 {{--                                                <span class="leading-normal text-red-600 text-sm font-weight-bolder">-2%</span>--}}
                                             </h5>
                                         </div>
@@ -69,7 +69,7 @@
                                         <div>
                                             <p class="mb-0 font-sans font-semibold leading-normal text-sm">New Users</p>
                                             <h5 class="mb-0 font-bold dark:text-white">
-                                                {{$unique_visitor}}
+                                                {{$uniqueVisitorCount}}
 {{--                                                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+3%</span>--}}
                                             </h5>
                                         </div>
@@ -135,117 +135,16 @@
             </div>
         </div>
         <div class="flex flex-wrap mt-6 -mx-3">
-            <div class="w-full max-w-full px-3 mt-0 mb-6 lg:mb-0 lg:w-5/12 lg:flex-none">
+            <div class="w-full max-w-full px-3 mt-0 mb-6 lg:mb-0 lg:w-7/12 lg:flex-none">
                 <div class="relative z-20 flex flex-col h-full min-w-0 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border">
-                    <div class="border-black/12.5 rounded-t-2xl border-b-0 border-solid p-4 pb-0">
-                        <div class="flex items-center">
-                            <h6 class="mb-0 dark:text-white">Referrals</h6>
-                            <button type="button" class="active:shadow-soft-xs active:opacity-85 ease-soft-in leading-pro text-xs bg-150 bg-x-25 rounded-3.5xl p-1.2 h-6 w-6 mb-0 ml-auto flex cursor-pointer items-center justify-center border border-solid border-slate-400 bg-transparent text-center align-middle font-bold text-slate-400 shadow-none transition-all hover:bg-transparent hover:text-slate-400 hover:opacity-75 hover:shadow-none active:bg-slate-400 active:text-black hover:active:bg-transparent hover:active:text-slate-400 hover:active:opacity-75 hover:active:shadow-none" data-target="tooltip_trigger">
-                                <i class="fas fa-info text-3xs"></i>
-                            </button>
-                            <div class="z-50 hidden px-2 py-1 text-center text-white bg-black rounded-lg max-w-46 text-sm" id="tooltip" role="tooltip" data-popper-placement="bottom">
-                                See wich websites are sending traffic to your website
-                                <div id="arrow" class="invisible absolute h-2 w-2 bg-inherit before:visible before:absolute before:h-2 before:w-2 before:rotate-45 before:bg-inherit before:content-['']" data-popper-arrow></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="flex-auto p-4">
-                        <div class="flex flex-wrap -mx-3">
-                            <div class="w-full max-w-full px-3 text-center flex-0 lg:w-5/12">
-                                <div class="mt-12">
-                                    <canvas id="chart-doughnut-referrals" height="200"></canvas>
-                                </div>
-                                <a href="javascript:;" class="inline-block px-8 py-2 m-0 mt-6 text-xs font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer ease-soft-in leading-pro tracking-tight-soft bg-gradient-to-tl from-slate-600 to-slate-300 shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85">See all referrals</a>
-                            </div>
-                            <div class="w-full max-w-full px-3 flex-0 lg:w-7/12">
-                                <div class="overscroll-x-auto">
-                                    <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
-                                        <tbody class="align-top">
-                                        <tr>
-                                            <td class="p-2 align-middle border-b border-solid dark:border-white/40 whitespace-nowrap border-inherit">
-                                                <div class="flex px-2 py-1">
-                                                    <div>
-                                                        <img class="inline-flex items-center justify-center text-white transition-all duration-200 text-sm ease-soft-in-out h-9 w-9 rounded-xl" src="../../assets/img/small-logos/logo-xd.svg" alt="xd logo" />
-                                                    </div>
-                                                    <div class="flex flex-col justify-center">
-                                                        <h6 class="mb-0 leading-normal dark:text-white text-sm">Adobe</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-2 leading-normal text-center align-middle border-b border-gray-200 border-solid text-sm whitespace-nowrap">
-                                                <span class="font-semibold leading-tight dark:text-white text-xs">25%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-2 align-middle border-b border-solid dark:border-white/40 whitespace-nowrap border-inherit">
-                                                <div class="flex px-2 py-1">
-                                                    <div>
-                                                        <img class="inline-flex items-center justify-center text-white transition-all duration-200 text-sm ease-soft-in-out h-9 w-9 rounded-xl" src="../../assets/img/small-logos/logo-atlassian.svg" alt="atlassian logo" />
-                                                    </div>
-                                                    <div class="flex flex-col justify-center">
-                                                        <h6 class="mb-0 leading-normal dark:text-white text-sm">Atlassian</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-2 leading-normal text-center align-middle border-b border-gray-200 border-solid text-sm whitespace-nowrap">
-                                                <span class="font-semibold leading-tight dark:text-white text-xs">3%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-2 align-middle border-b border-solid dark:border-white/40 whitespace-nowrap border-inherit">
-                                                <div class="flex px-2 py-1">
-                                                    <div>
-                                                        <img class="inline-flex items-center justify-center text-white transition-all duration-200 text-sm ease-soft-in-out h-9 w-9 rounded-xl" src="../../assets/img/small-logos/logo-slack.svg" alt="slack logo" />
-                                                    </div>
-                                                    <div class="flex flex-col justify-center">
-                                                        <h6 class="mb-0 leading-normal dark:text-white text-sm">Slack</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-2 leading-normal text-center align-middle border-b border-gray-200 border-solid text-sm whitespace-nowrap">
-                                                <span class="font-semibold leading-tight dark:text-white text-xs">12%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-2 align-middle border-b border-solid dark:border-white/40 whitespace-nowrap border-inherit">
-                                                <div class="flex px-2 py-1">
-                                                    <div>
-                                                        <img class="inline-flex items-center justify-center text-white transition-all duration-200 text-sm ease-soft-in-out h-9 w-9 rounded-xl" src="../../assets/img/small-logos/logo-spotify.svg" alt="spotify logo" />
-                                                    </div>
-                                                    <div class="flex flex-col justify-center">
-                                                        <h6 class="mb-0 leading-normal dark:text-white text-sm">Spotify</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-2 leading-normal text-center align-middle border-b border-gray-200 border-solid text-sm whitespace-nowrap">
-                                                <span class="font-semibold leading-tight dark:text-white text-xs">7%</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-2 align-middle border-b-0 border-solid whitespace-nowrap border-inherit">
-                                                <div class="flex px-2 py-1">
-                                                    <div>
-                                                        <img class="inline-flex items-center justify-center text-white transition-all duration-200 text-sm ease-soft-in-out h-9 w-9 rounded-xl" src="../../assets/img/small-logos/logo-jira.svg" alt="jira logo" />
-                                                    </div>
-                                                    <div class="flex flex-col justify-center">
-                                                        <h6 class="mb-0 leading-normal dark:text-white text-sm">Jira</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-2 leading-normal text-center align-middle border-b-0 border-gray-200 border-solid text-sm whitespace-nowrap">
-                                                <span class="font-semibold leading-tight dark:text-white text-xs">10%</span>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                    <div class="flex flex-wrap -mx-3">
+                        <div class="w-full max-w-full px-3 flex-0">
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1E35KQXZZ9pd6L?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="w-full max-w-full px-3 mt-0 lg:w-7/12 lg:flex-none">
+            <div class="w-full max-w-full px-3 mt-0 lg:w-5/12 lg:flex-none">
                 <div class="relative z-20 flex flex-col h-full min-w-0 mt-6 break-words bg-white border-0 md:mt-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border">
                     <div class="border-black/12.5 rounded-t-2xl border-b-0 border-solid p-4 pb-0">
                         <div class="flex items-center">
@@ -272,7 +171,7 @@
                                 </thead>
                                 <tbody class="align-top">
 
-                                @foreach($visits_page_repeated as $key)
+                                @foreach($mostFrequentAttributes as $key)
                                 <tr>
                                     <td class="p-2 align-middle border-b border-solid dark:border-white/40 whitespace-nowrap border-inherit">
                                         <p class="mb-0 font-semibold leading-normal text-sm">{{$loop->index + 1 . '. - '}}{{$key->attribute}}</p>
@@ -307,9 +206,9 @@
         <script>
             var labels = ['Saturday', 'Sunday', 'Monday', 'Thursday', 'Wednesday', 'Thirthday', 'Friday', 'Saturday'];
             var labels = {{ Js::from($labels) }};
-            var data = {{ Js::from($data) }};
-
-
+            var dataOrganic = {{ Js::from($dataOrganic) }};
+            var dataReferral = {{ Js::from($dataReferral) }};
+            var dataDirect = {{ Js::from($dataDirect) }};
 
 
 
@@ -339,15 +238,39 @@
                         tension: 0.4,
                         borderWidth: 0,
                         pointRadius: 2,
-                        pointBackgroundColor: "#3A416F",
-                        borderColor: "#3A416F",
+                        pointBackgroundColor: "#17c1e8",
+                        borderColor: "#17c1e8",
                         borderWidth: 3,
                         backgroundColor: gradientStroke1,
-                        data: data,
+                        data: dataDirect,
                         maxBarThickness: 6
 
                     },
+                    {
+                        label: "Organic Traffic",
+                        tension: 0.4,
+                        borderWidth: 0,
+                        pointRadius: 2,
+                        pointBackgroundColor: "#cb0c9f",
+                        borderColor: "#cb0c9f",
+                        borderWidth: 3,
+                        backgroundColor: gradientStroke1,
+                        data: dataOrganic,
+                        maxBarThickness: 6
 
+                    },
+                    {
+                      label: "Referral",
+                      tension: 0.4,
+                      borderWidth: 0,
+                      pointRadius: 2,
+                      pointBackgroundColor: "#3A416F",
+                      borderColor: "#3A416F",
+                      borderWidth: 3,
+                      backgroundColor: gradientStroke2,
+                      data: dataReferral,
+                      maxBarThickness: 6
+                    },
                     ],
                 },
                 options: {

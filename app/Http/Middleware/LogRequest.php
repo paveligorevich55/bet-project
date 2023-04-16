@@ -44,8 +44,16 @@ class LogRequest
         }
         if ($request->headers->has('referer')){
             $url = $request->headers->get('referer');
-            $referer = parse_url($url);
-            $referer = $referer['host'];
+            $referer = parse_url($request->headers->get('referer'), PHP_URL_HOST);
+
+            $regex_pattern = '/\bgoogle|yahoo|bing|yandex\b/';
+            $match_result = preg_match($regex_pattern, $referer, $matches);
+
+//            dd($matches[0]);
+
+            if($match_result){
+                $referer = $matches[0];
+            }
 
         } else {
             $referer = 'Direct';

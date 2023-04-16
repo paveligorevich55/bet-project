@@ -14,52 +14,70 @@ class IndexController extends Controller
     public function index(): Response
     {
 
-        $visits = DB::table('events')->get();
+        $events = Event::all();
+        $visitorCount = count($events);
+        $uniqueVisitorCount = $events->groupBy('visitor_id')->count();
+        $todayEventsCount = Event::whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->count();
+        $eventAttributes = Event::pluck('attribute')->unique();
+        $mostFrequentAttributes = Event::select('attribute', DB::raw('COUNT(*) as count'))->groupBy('attribute')->orderBy('count', 'DESC')->limit(7)->get();
+        $mostFrequentDevices = Event::select('device', DB::raw('COUNT(*) as count'))->groupBy('device')->orderBy('count', 'DESC')->limit(7)->get();
 
-        $visitors_count = $visits->count();
+        $referralFilters = ['google', 'yandex', 'bing', 'yahoo', 'Direct'];
 
-        $unique_visitor = $visits->unique('visitor_id')->count();
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+        $dates = [];
+        $currentDate = $startOfMonth->copy();
 
-        $today_visits = $visits->whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->count();
+        while ($currentDate->lte($endOfMonth)) {
+            $dates[] = $currentDate->copy();
+            $currentDate->addDay();
+        }
 
-        $visits_pages = DB::table('events')
-                        ->pluck('attribute')
-                        ->unique();
+        $directTraffic = Event::select(DB::raw("COUNT(*) as count"), DB::raw("DAY(created_at) as day_num"), 'referer')
+            ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->where('referer' , 'Direct')
+            ->groupBy(DB::raw("Day(created_at)"))
+            ->pluck('count', 'day_num');
 
-        $visits_page_repeated = DB::table('events')
-                                ->select('events.*', DB::raw('COUNT(attribute) as count'))
-                                ->groupBy('attribute')
-                                ->orderBy('count', 'DESC')
-                                ->limit(7)
-                                ->get();
-        $visits_repeated_device = DB::table('events')
-                                ->select('events.*', DB::raw('COUNT(device) as count'))
-                                ->groupBy('device')
-                                ->orderBy('count', 'DESC')
-                                ->limit(7)
-                                ->get();
+        $referralTraffic = Event::select(DB::raw("COUNT(*) as count"), DB::raw("DAY(created_at) as day_num"), 'referer')
+            ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->whereNotIn('referer' , $referralFilters)
+            ->groupBy(DB::raw("Day(created_at)"))
+            ->pluck('count', 'day_num');
 
-        $organic_referer = "/(google|yandex|bing)/i";
-        $direct_referer = 'Direct';
-        $referal_referer = !$organic_referer && !$direct_referer;
+        $organicTraffic = Event::select(DB::raw("COUNT(*) as count"), DB::raw("DAY(created_at) as day_num"), 'referer')
+            ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
+            ->whereIn('referer' , ['google', 'yandex', 'bing', 'yahoo'])
+            ->groupBy(DB::raw("Day(created_at)"))
+            ->pluck('count', 'day_num');
 
-        $exmp = Event::select(DB::raw("COUNT(*) as count"), DB::raw("DAY(created_at) as day_num"), 'referer')
-                ->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
-                ->where('referer' , $direct_referer)
-                ->groupBy(DB::raw("Day(created_at)"))
-                ->pluck('count', 'day_num');
 
-        $labels = $exmp->keys();
-        $data = $exmp->values();
+        $datesCollection = collect($dates);
+        $labels = $datesCollection->map(function ($date) {
+            return $date->day;
+        });
+        $dataReferral = $datesCollection->map(function ($date) use ($referralTraffic) {
+            return isset($referralTraffic[$date->day]) ? $referralTraffic[$date->day] : 0;
+        });
+        $dataOrganic = $datesCollection->map(function ($date) use ($organicTraffic) {
+            return isset($organicTraffic[$date->day]) ? $organicTraffic[$date->day] : 0;
+        });
+        $dataDirect = $datesCollection->map(function ($date) use ($directTraffic) {
+            return isset($directTraffic[$date->day]) ? $directTraffic[$date->day] : 0;
+        });
 
         return response()->view('dashboard', compact([
             'labels',
-            'data',
-            'today_visits',
-            'visits_pages',
-            'visitors_count',
-            'unique_visitor',
-            'visits_page_repeated',
+            'dataOrganic',
+            'dataReferral',
+            'dataDirect',
+            'todayEventsCount',
+            'eventAttributes',
+            'visitorCount',
+            'uniqueVisitorCount',
+            'mostFrequentAttributes',
         ]));
     }
+
 }

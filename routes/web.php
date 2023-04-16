@@ -9,6 +9,8 @@ use App\Http\Controllers\panel\PromoController;
 use App\Http\Controllers\panel\BookmakerController;
 use App\Http\Controllers\panel\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Event;
+use Illuminate\Support\Facades\Request;
 
 
 // Website Routes
@@ -22,6 +24,7 @@ Route::get('/', function () {
 Route::get('/back', function () {
     return redirect()->back();
 })->middleware('event');
+
 
 
 
