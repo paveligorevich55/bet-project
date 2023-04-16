@@ -16,6 +16,12 @@ class IndexController extends Controller
 
         $visits = DB::table('events')->get();
 
+        $visitors_count = $visits->count();
+
+        $unique_visitor = $visits->unique('visitor_id')->count();
+
+        $today_visits = $visits->whereBetween('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->count();
+
         $visits_pages = DB::table('events')
                         ->pluck('attribute')
                         ->unique();
@@ -27,63 +33,33 @@ class IndexController extends Controller
                                 ->limit(7)
                                 ->get();
         $visits_repeated_device = DB::table('events')
-            ->select('events.*', DB::raw('COUNT(device) as count'))
-            ->groupBy('device')
-            ->orderBy('count', 'DESC')
-            ->limit(7)
-            ->get();
+                                ->select('events.*', DB::raw('COUNT(device) as count'))
+                                ->groupBy('device')
+                                ->orderBy('count', 'DESC')
+                                ->limit(7)
+                                ->get();
 
-        $exmp2 = Event::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), 'referer')
-            ->whereDay('created_at', date('d'))
-            ->where('referer' , 'Direct')
-            ->groupBy(DB::raw("Day(created_at)"))
-            ->pluck('count', 'day_name');
+        $organic_referer = "/(google|yandex|bing)/i";
+        $direct_referer = 'Direct';
+        $referal_referer = !$organic_referer && !$direct_referer;
 
-        $labels = $exmp2->keys();
-        $data = $exmp2->values();
+        $exmp = Event::select(DB::raw("COUNT(*) as count"), DB::raw("DAY(created_at) as day_num"), 'referer')
+                ->whereBetween('created_at', [Carbon::now()->startOfMonth(), Carbon::now()->endOfMonth()])
+                ->where('referer' , $direct_referer)
+                ->groupBy(DB::raw("Day(created_at)"))
+                ->pluck('count', 'day_num');
 
-        $exmp = Event::select(DB::raw("COUNT(*) as count"), DB::raw("DAYNAME(created_at) as day_name"), 'referer')
-            ->whereDay('created_at', date('d'))
-            ->where('referer' , 'Direct')
-            ->groupBy(DB::raw("Day(created_at)"))
-            ->pluck('count', 'day_name');
+        $labels = $exmp->keys();
+        $data = $exmp->values();
 
-
-        $visitors_count = $visits->count();
-
-        $unique_visitor = $visits->unique('visitor_id')->count();
-
-
-
-//        $visit_social = $visits->pluck('referer')->all();
-//
-//        foreach ($visit_social as $vs)
-//            switch ($vs){
-//                case ('www.google.com'):
-//                    $me = 'good';
-//                    break;
-//                case ('Direct'):
-//                    $me = 'The Same Shit';
-//                    break;
-//                default:
-//                    $me = 'fuck';
-//            }
-//
-//
-//        dd($me);
-
-
-
-
-
-
-
-
-
-
-
-
-
-        return response()->view('dashboard', compact(['labels','data','exmp', 'visits_pages', 'visitors_count', 'unique_visitor', 'visits_page_repeated']));
+        return response()->view('dashboard', compact([
+            'labels',
+            'data',
+            'today_visits',
+            'visits_pages',
+            'visitors_count',
+            'unique_visitor',
+            'visits_page_repeated',
+        ]));
     }
 }
