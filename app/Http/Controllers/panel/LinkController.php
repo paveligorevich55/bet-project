@@ -65,6 +65,7 @@ class LinkController extends Controller
     {
         return response()->view('layouts.panel.links.show', [
             'link' => Link::findOrFail($id),
+            'bookmakers' => Bookmaker::all(),
         ]);
     }
 

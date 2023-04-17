@@ -22,7 +22,7 @@ class UpdateRequest extends FormRequest
             'title' => 'required|string|min:3|max:250',
             'content' => 'required',
             'featured_image' => 'nullable|image|mimes:jpg,jpeg,png',
-            'category' => 'required',
+            'category_id' => 'required',
         ];
     }
 }

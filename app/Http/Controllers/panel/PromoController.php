@@ -64,6 +64,7 @@ class PromoController extends Controller
     {
         return response()->view('layouts.panel.promos.show', [
             'promo' => Promo::findOrFail($id),
+            'bookmakers' => Bookmaker::all(),
         ]);
     }
 

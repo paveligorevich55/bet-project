@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Link;
+namespace App\Http\Requests\Webmaster;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,7 @@ class StoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:12',
-            'link' => 'required|string|min:5|max:250',
-            'bookmaker_id' => 'required'
+            'code' => 'required'
         ];
     }
 }

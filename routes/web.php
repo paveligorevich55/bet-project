@@ -8,6 +8,7 @@ use App\Http\Controllers\panel\LinkController;
 use App\Http\Controllers\panel\PromoController;
 use App\Http\Controllers\panel\BookmakerController;
 use App\Http\Controllers\panel\UserController;
+use App\Models\Webmaster;
 use Illuminate\Support\Facades\Route;
 use App\Models\Event;
 use Illuminate\Support\Facades\Request;
@@ -51,6 +52,12 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth']], function (){
     Route::resource('post', PostController::class);
     Route::resource('link', LinkController::class);
     Route::resource('promo', PromoController::class);
+
+    Route::controller(\App\Http\Controllers\panel\WebmasterController::class)->group(function () {
+       Route::get('/webmaster', 'index')->name('webmaster');
+       Route::put('/webmaster/{webmaster}/update', 'update')->name('webmaster.update');
+       Route::post('/webmaster', 'store')->name('webmaster.store');
+    });
 
 
 });

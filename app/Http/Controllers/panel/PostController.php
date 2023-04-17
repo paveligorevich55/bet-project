@@ -59,7 +59,7 @@ class PostController extends Controller
         if($create) {
             // add flash for the success notification
             session()->flash('notif.success', 'Post created successfully!');
-            return redirect()->route('layouts.panel.posts.index');
+            return redirect()->back();
         }
 
         return abort(500);
@@ -126,7 +126,7 @@ class PostController extends Controller
 
         if($delete) {
             session()->flash('notif.success', 'Post deleted successfully!');
-            return redirect()->route('layouts.panel.posts.index');
+            return redirect()->back();
         }
 
         return abort(500);

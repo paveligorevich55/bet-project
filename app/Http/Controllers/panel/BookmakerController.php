@@ -51,8 +51,10 @@ class BookmakerController extends Controller
             $validated['image'] = $filePath;
         }
 
-        $create = Bookmaker::create($validated);
 
+
+        $create = Bookmaker::create($validated);
+        dd($create);
         if($create) {
             // add flash for the success notification
             session()->flash('notif.success', 'Bookmaker created successfully!');
@@ -116,7 +118,9 @@ class BookmakerController extends Controller
     {
         $bookmaker = Bookmaker::findOrFail($id);
 
-        Storage::disk('public')->delete($bookmaker->image);
+        if ($bookmaker->image != null){
+            Storage::disk('public')->delete($bookmaker->image);
+        }
 
         $delete = $bookmaker->delete($id);
 

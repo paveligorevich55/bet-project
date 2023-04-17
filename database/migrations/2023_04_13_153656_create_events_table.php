@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('visitor_id');
             $table->string('device');
             $table->string('system')->nullable();
+            $table->integer('time_on_site')->nullable();
             $table->timestamps();
         });
     }

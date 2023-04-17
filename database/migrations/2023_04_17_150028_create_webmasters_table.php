@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('events', function (Blueprint $table) {
-            $table->integer('time_on_site')->nullable();
+        Schema::create('webmasters', function (Blueprint $table) {
+            $table->id();
+            $table->longText('code');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('events', function (Blueprint $table) {
-            $table->dropColumn('time_on_site');
-        });
+        Schema::dropIfExists('webmasters');
     }
 };

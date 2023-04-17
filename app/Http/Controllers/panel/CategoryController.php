@@ -62,7 +62,7 @@ class CategoryController extends Controller
     public function show(string $id): Response
     {
         return response()->view('layouts.panel.categories.show', [
-            'bookmaker' => Category::findOrFail($id),
+            'category' => Category::findOrFail($id),
         ]);
     }
 

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-        <div class="relative flex flex-col w-full h-sidenav max-h-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
+        <div class="relative flex flex-col w-full h-sidenav max-h-full min-w-0 mb-0 mt-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="p-6 pb-0 mb-0 bg-white rounded-t-2xl">
                 <h6>Promo Codes table</h6>
                 <a href="{{route('promo.create')}}" type="button" class="inline-block mt-4 px-4 py-2 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-sky-400 to-stone-800 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Create New Promo Code</a>

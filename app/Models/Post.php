@@ -12,6 +12,7 @@ class Post extends Model
         'content',
         'featured_image',
         'user_id',
+        'category_id'
     ];
 
     protected $guarded = [

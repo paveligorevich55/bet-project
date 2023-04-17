@@ -34,12 +34,20 @@
                             <textarea id="content" class="content" name="content"></textarea>
                         </div>
 
+                        <x-panel.input-label class="inline-block mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                                             for="description"
+                                             :value="__('Post Description')"
+                        />
+                        <div>
+                            <textarea name="description" id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here"></textarea>
+                        </div>
+
                         <div class="max-w-full mt-4 flex-0">
                             <x-panel.input-label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
                                                  for="catetory"
                                                  :value="__('Category')"
                             />
-                            <select choices-select choice name="category" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                            <select choices-select choice name="category_id" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
                                 <option disabled selected="selected">...</option>
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -58,7 +66,7 @@
                         </div>
                         <div class="flex justify-end mt-6">
                             <button type="button" class="inline-block px-6 py-3 m-0 font-bold text-center uppercase align-middle transition-all bg-gray-200 border-0 rounded-lg cursor-pointer hover:scale-102 active:opacity-85 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 text-slate-800">Cancel</button>
-                            <button type="button" class="inline-block px-6 py-3 m-0 ml-2 text-xs font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer ease-soft-in leading-pro tracking-tight-soft bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85">Create Project</button>
+                            <button type="submit" class="inline-block px-6 py-3 m-0 ml-2 text-xs font-bold text-center text-white uppercase align-middle transition-all border-0 rounded-lg cursor-pointer ease-soft-in leading-pro tracking-tight-soft bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85">Create Project</button>
                         </div>
                     </form>
                 </div>
@@ -94,13 +102,21 @@
                                 <textarea id="content" class="content" name="content">{{$post->content}}</textarea>
                             </div>
 
+                            <x-panel.input-label class="inline-block mt-6 mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
+                                                 for="description"
+                                                 :value="__('Post Description')"
+                            />
+                            <div>
+                                <textarea name="description" id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your description here">{{$post->description}}</textarea>
+                            </div>
+
                             <div class="max-w-full mt-4 flex-0">
                                 <x-panel.input-label class="mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80"
                                                      for="catetory"
                                                      :value="__('Category')"
                                 />
-                                <select choices-select choice name="category" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
-                                    <option disabled selected="selected">{{$post->category->name}}</option>
+                                <select choices-select choice name="category_id" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                                    <option disabled selected="{{$post->category->id}}">{{$post->category->name}}</option>
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach

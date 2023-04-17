@@ -22,7 +22,7 @@ class StoreRequest extends FormRequest
             'title' => 'required|min:3|max:250|unique:posts,title',
             'content' => 'required',
             'featured_image' => 'required|image|mimes:jpg,jpeg,png',
-            'category' => 'required',
+            'category_id' => 'required',
             'user_id' => 'required',
         ];
     }
