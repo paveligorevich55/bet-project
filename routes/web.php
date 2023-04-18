@@ -53,11 +53,19 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth']], function (){
     Route::resource('link', LinkController::class);
     Route::resource('promo', PromoController::class);
 
+    Route::controller(\App\Http\Controllers\panel\SettingsController::class)->group(function (){
+        Route::get('/settings', 'index')->name('settings');
+        Route::put('/settings/{setting}/update', 'update')->name('settings.update');
+        Route::post('/settings', 'store')->name('settings.store');
+    });
+
     Route::controller(\App\Http\Controllers\panel\WebmasterController::class)->group(function () {
        Route::get('/webmaster', 'index')->name('webmaster');
        Route::put('/webmaster/{webmaster}/update', 'update')->name('webmaster.update');
        Route::post('/webmaster', 'store')->name('webmaster.store');
     });
+
+
 
 
 });
