@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-panel.app-layout>
     <div class="flex mt-6 flex-wrap -mx-3 my-2">
         <div class="w-full max-w-full px-3 flex-0">
             <div class="relative flex flex-col min-w-0 break-words bg-white border-0 dark:bg-gray-950 dark:shadow-soft-dark-xl shadow-soft-xl rounded-2xl bg-clip-border">
@@ -44,4 +44,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-panel.app-layout>

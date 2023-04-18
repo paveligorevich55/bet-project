@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-panel.guest-layout>
 {{--    <form method="POST" action="{{ route('register') }}">--}}
 {{--        @csrf--}}
 
@@ -162,4 +162,4 @@
             </div>
         </div>
     </div>
-</x-guest-layout>
+</x-panel.guest-layout>

@@ -26,7 +26,7 @@ class PostController extends Controller
      */
     public function index(): Response
     {
-        return response()->view('layouts.panel.posts.index', [
+        return response()->view('layouts.panel.pages.posts.index', [
             'posts' => Post::orderBy('updated_at', 'desc')->get(),
         ]);
     }
@@ -37,7 +37,7 @@ class PostController extends Controller
     public function create(): Response
     {
         $categories = Category::all();
-        return response()->view('layouts.panel.posts.form' ,compact('categories'));
+        return response()->view('layouts.panel.pages.posts.form' ,compact('categories'));
     }
 
     /**
@@ -70,7 +70,7 @@ class PostController extends Controller
      */
     public function show(string $id): Response
     {
-        return response()->view('layouts.panel.posts.show', [
+        return response()->view('layouts.panel.pages.posts.show', [
             'post' => Post::findOrFail($id),
             'categories' => Category::all(),
         ]);
@@ -81,7 +81,7 @@ class PostController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('layouts.panel.posts.form', [
+        return response()->view('layouts.panel.pages.posts.form', [
             'post' => Post::findOrFail($id),
             'categories' => Category::all(),
         ]);

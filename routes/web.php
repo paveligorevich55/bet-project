@@ -1,17 +1,14 @@
 <?php
 
-use App\Http\Controllers\panel\IndexController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\panel\CategoryController;
-use App\Http\Controllers\panel\PostController;
-use App\Http\Controllers\panel\LinkController;
-use App\Http\Controllers\panel\PromoController;
 use App\Http\Controllers\panel\BookmakerController;
+use App\Http\Controllers\panel\CategoryController;
+use App\Http\Controllers\panel\IndexController;
+use App\Http\Controllers\panel\LinkController;
+use App\Http\Controllers\panel\PostController;
+use App\Http\Controllers\panel\ProfileController;
+use App\Http\Controllers\panel\PromoController;
 use App\Http\Controllers\panel\UserController;
-use App\Models\Webmaster;
 use Illuminate\Support\Facades\Route;
-use App\Models\Event;
-use Illuminate\Support\Facades\Request;
 
 
 // Website Routes

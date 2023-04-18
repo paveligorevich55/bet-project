@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-panel.app-layout>
 
     <section class="bg-white mt-6 dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
@@ -36,5 +36,5 @@
 
     @endpush
 
-</x-app-layout>
+</x-panel.app-layout>
 

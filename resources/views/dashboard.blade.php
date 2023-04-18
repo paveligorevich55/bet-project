@@ -1,5 +1,4 @@
-<x-app-layout>
-
+<x-panel.app-layout>
 
         <div class="flex flex-wrap -mx-3">
             <div class="relative z-20 w-full max-w-full px-3 lg:flex-0 shrink-0 lg:w-7/12">
@@ -202,15 +201,12 @@
         <script src="{{asset('/assets/js/plugins/chartjs.min.js')}}"></script>
         <script src="{{asset('/assets/js/plugins/threejs.js')}}"></script>
         <script src="{{asset('/assets/js/plugins/orbit-controls.js')}}"></script>
-
         <script>
             var labels = ['Saturday', 'Sunday', 'Monday', 'Thursday', 'Wednesday', 'Thirthday', 'Friday', 'Saturday'];
             var labels = {{ Js::from($labels) }};
             var dataOrganic = {{ Js::from($dataOrganic) }};
             var dataReferral = {{ Js::from($dataReferral) }};
             var dataDirect = {{ Js::from($dataDirect) }};
-
-
 
             var ctx1 = document.getElementById("chart-line-traffic").getContext("2d");
 
@@ -319,4 +315,4 @@
             });
         </script>
     @endpush
-</x-app-layout>
+</x-panel.app-layout>

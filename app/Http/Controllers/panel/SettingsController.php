@@ -19,7 +19,7 @@ class SettingsController extends Controller
     {
         $setting = Settings::first();
 
-        return response()->view('layouts.panel.settings.index', compact('setting'));
+        return response()->view('layouts.panel.pages.settings.index', compact('setting'));
     }
 
 

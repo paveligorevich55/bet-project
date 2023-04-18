@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-panel.app-layout>
 
     <div class="w-full p-6 mx-auto">
         <section class="py-4">
@@ -76,7 +76,8 @@
                 </div>
             </div>
         </section>
+    </div>
 
 
 
-</x-app-layout>
+</x-panel.app-layout>

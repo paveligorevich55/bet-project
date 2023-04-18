@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-panel.app-layout>
 
 
         @if(Route::is('post.create'))
@@ -161,5 +161,5 @@
         </script>
     @endpush
 
-</x-app-layout>
+</x-panel.app-layout>
 

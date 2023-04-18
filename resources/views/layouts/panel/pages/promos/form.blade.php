@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-panel.app-layout>
     @if(Route::is('promo.create'))
         <section class="bg-white mt-6 dark:bg-gray-900">
             <div class="py-8 px-4 mx-auto max-w-2xl lg:py-16">
@@ -64,4 +64,4 @@
     @push('scripts')
         <script src="{{asset('assets')}}/js/plugins/choices.min.js"></script>
     @endpush
-</x-app-layout>
+</x-panel.app-layout>

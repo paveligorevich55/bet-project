@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-panel.app-layout>
 
 
     <section class="bg-white mt-6 dark:bg-gray-900">
@@ -74,4 +74,4 @@
     </section>
 
 
-</x-app-layout>
+</x-panel.app-layout>

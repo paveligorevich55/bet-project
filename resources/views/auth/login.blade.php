@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-panel.guest-layout>
 
     <div class="pb-56 pt-12 m-4 min-h-50-screen items-start rounded-xl p-0 relative overflow-hidden flex bg-cover bg-center bg-[url('../../assets/img/curved-images/curved9.jpg')]">
         <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover opacity-60 bg-gradient-to-tl from-gray-900 to-slate-800"></span>
@@ -157,4 +157,4 @@
 {{--    </form>--}}
 
 
-</x-guest-layout>
+</x-panel.guest-layout>

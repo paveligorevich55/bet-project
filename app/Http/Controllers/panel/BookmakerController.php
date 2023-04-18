@@ -24,7 +24,7 @@ class BookmakerController extends Controller
      */
     public function index(): Response
     {
-        return response()->view('layouts.panel.bookmakers.index', [
+        return response()->view('layouts.panel.pages.bookmakers.index', [
             'bookmakers' => Bookmaker::orderBy('updated_at', 'desc')->get(),
             'links' => Link::all(),
         ]);
@@ -35,7 +35,7 @@ class BookmakerController extends Controller
      */
     public function create(): Response
     {
-        return response()->view('layouts.panel.bookmakers.form');
+        return response()->view('layouts.panel.pages.bookmakers.form');
     }
 
     /**
@@ -51,14 +51,10 @@ class BookmakerController extends Controller
             $validated['image'] = $filePath;
         }
 
-
-
         $create = Bookmaker::create($validated);
-        dd($create);
+
         if($create) {
-            // add flash for the success notification
-            session()->flash('notif.success', 'Bookmaker created successfully!');
-            return redirect()->route('bookmaker.index');
+            return redirect(route('bookmaker.index'))->with('status', 'Bookmaker created successfully!');
         }
 
         return abort(500);
@@ -104,8 +100,7 @@ class BookmakerController extends Controller
         $update = $bookmaker->update($validated);
 
         if($update) {
-            session()->flash('notif.success', 'Bookmaker updated successfully!');
-            return redirect()->route('bookmaker.index');
+            return redirect(route('bookmaker.index'))->with('status', 'Bookmaker updated successfully!');
         }
 
         return abort(500);
@@ -125,8 +120,7 @@ class BookmakerController extends Controller
         $delete = $bookmaker->delete($id);
 
         if($delete) {
-            session()->flash('notif.success', 'Bookmaker deleted successfully!');
-            return redirect()->route('bookmaker.index');
+            return redirect(route('bookmaker.index'))->with('status', 'Bookmaker deleted successfully!');
         }
 
         return abort(500);

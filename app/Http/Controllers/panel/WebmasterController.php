@@ -19,10 +19,10 @@ class WebmasterController extends Controller
     {
         $webmaster = Webmaster::find(1);
 
-        return response()->view('layouts.panel.webmasters.index', compact(['webmaster']));
+        return response()->view('layouts.panel.pages.webmasters.index', compact(['webmaster']));
     }
 
-    public function store(StoreRequest $request): Response
+    public function store(StoreRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -30,7 +30,7 @@ class WebmasterController extends Controller
 
         if ($create) {
             session()->flash('notif.success', 'Webmaster Code Create successfully');
-            return response()->view('layouts.panel.webmasters.index');
+            return redirect()->back();
         }
 
         return abort(500);
