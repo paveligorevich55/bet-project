@@ -22,7 +22,7 @@ Route::get('/', function () {
 Route::get('/back', function () {
     return redirect()->back();
 })->middleware('event');
-
+Route::get('/custom/{shortURLKey}', '\AshAllenDesign\ShortURL\Controllers\ShortURLController');
 
 
 
@@ -40,7 +40,6 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth']], function (){
         Route::get('/profile', 'edit')->name('profile.edit');
         Route::put('/profile/{userProfile}/update', 'update')->name('profile.update');
         Route::delete('/profile', 'destroy')->name('profile.destroy');
-//        Route::put('/profile/{userProfile}/image', 'updateImage')->name('profile.avatar-update');
     });
 
     Route::resource('user', UserController::class);

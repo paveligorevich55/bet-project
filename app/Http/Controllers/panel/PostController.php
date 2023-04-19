@@ -58,8 +58,7 @@ class PostController extends Controller
 
         if($create) {
             // add flash for the success notification
-            session()->flash('notif.success', 'Post created successfully!');
-            return redirect()->back();
+            return redirect(back())->with('status', 'Post created successfully!');
         }
 
         return abort(500);
@@ -106,8 +105,7 @@ class PostController extends Controller
         $update = $post->update($validated);
 
         if($update) {
-            session()->flash('notif.success', 'Post updated successfully!');
-            return redirect()->back();
+            return redirect(back())->with('status', 'Post updated successfully!');
         }
 
         return abort(500);
@@ -125,8 +123,7 @@ class PostController extends Controller
         $delete = $post->delete($id);
 
         if($delete) {
-            session()->flash('notif.success', 'Post deleted successfully!');
-            return redirect()->back();
+            return redirect(back())->with('status', 'Post deleted successfully!');
         }
 
         return abort(500);

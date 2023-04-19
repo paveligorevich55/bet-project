@@ -65,7 +65,7 @@ class BookmakerController extends Controller
      */
     public function show(string $id): Response
     {
-        return response()->view('layouts.panel.bookmakers.show', [
+        return response()->view('layouts.panel.pages.bookmakers.show', [
             'bookmaker' => Bookmaker::findOrFail($id),
         ]);
     }
@@ -75,7 +75,7 @@ class BookmakerController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('layouts.panel.bookmakers.form', [
+        return response()->view('layouts.panel.pages.bookmakers.form', [
             'bookmaker' => Bookmaker::findOrFail($id),
         ]);
     }

@@ -50,8 +50,7 @@ class PromoController extends Controller
 
         if($create) {
             // add flash for the success notification
-            session()->flash('notif.success', 'Promo created successfully!');
-            return redirect()->route('promos.index');
+            return redirect(route('promo.index'))->with('status', 'Promo created successfully!');
         }
 
         return abort(500);
@@ -90,8 +89,7 @@ class PromoController extends Controller
         $update = $promo->update($validated);
 
         if($update) {
-            session()->flash('notif.success', 'Promo updated successfully!');
-            return redirect()->route('promos.index');
+            return redirect(route('promo.index'))->with('status', 'Promo updated successfully!');
         }
 
         return abort(500);
@@ -107,8 +105,7 @@ class PromoController extends Controller
         $delete = $promo->delete($id);
 
         if($delete) {
-            session()->flash('notif.success', 'Promo deleted successfully!');
-            return redirect()->route('promos.index');
+            return redirect(route('promo.index'))->with('status', 'Promo deleted successfully!');
         }
 
         return abort(500);

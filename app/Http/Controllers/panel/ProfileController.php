@@ -39,19 +39,14 @@ class ProfileController extends Controller
             $validated['image'] = $filePath;
         }
 
-
-
         $update = $userProfile->update($validated);
 
         if($update) {
-            session()->flash('notif.success', 'User Profile updated successfully!');
-            return redirect()->back();
+            return redirect(back())->with('status', 'User Profile updated successfully!');
         }
 
         return abort(500);
     }
-
-
 
 
     /**

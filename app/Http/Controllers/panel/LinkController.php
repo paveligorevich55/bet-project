@@ -10,6 +10,8 @@ use App\Http\Requests\Link\StoreRequest;
 use App\Http\Requests\Link\UpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use AshAllenDesign\ShortURL\Classes\Builder;
+use AshAllenDesign\ShortURL\Models\ShortURL;
 
 class LinkController extends Controller
 {
@@ -47,12 +49,25 @@ class LinkController extends Controller
     {
         $validated = $request->validated();
 
+        $builder = new Builder();
+
         $create = Link::create($validated);
+
+        $shortURLObject = $builder->destinationUrl($request->link)
+            ->urlKey($request->name)
+            ->trackVisits()
+            ->trackIPAddress()
+            ->trackRefererURL()
+            ->trackDeviceType()
+            ->trackBrowser()
+            ->trackOperatingSystem()
+            ->make();
+
+        $shortURL = $shortURLObject->default_short_url;
 
         if($create) {
             // add flash for the success notification
-            session()->flash('notif.success', 'Link created successfully!');
-            return redirect()->route('links.index');
+            return redirect()->route('link.index')->with('status', 'Link created successfully!');
         }
 
         return abort(500);
@@ -87,13 +102,19 @@ class LinkController extends Controller
     {
         $link = Link::findOrFail($id);
         $validated = $request->validated();
+        dd($request);
+//        $shortURL = ShortURL::where('url_key', $request->name)->first();
 
         $update = $link->update($validated);
 
+//        $updateURL = $shortURL->update([
+//            'destination_url' => $request->link,
+//            'url_key' => $request->name,
+//        ]);
+
         if($update) {
             // add flash for the success notification
-            session()->flash('notif.success', 'Link updated successfully!');
-            return redirect()->route('links.index');
+            return redirect()->route('link.index')->with('status', 'Link updated successfully!');
         }
 
         return abort(500);
@@ -109,8 +130,7 @@ class LinkController extends Controller
         $delete = $link->delete($id);
 
         if($delete) {
-            session()->flash('notif.success', 'Link deleted successfully!');
-            return redirect()->route('links.index');
+            return redirect()->route('link.index')->with('status', 'Link deleted successfully!');
         }
 
         return abort(500);

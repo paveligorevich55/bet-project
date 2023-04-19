@@ -29,8 +29,7 @@ class WebmasterController extends Controller
         $create = Webmaster::create($validated);
 
         if ($create) {
-            session()->flash('notif.success', 'Webmaster Code Create successfully');
-            return redirect()->back();
+            return redirect()->back()->with('status', 'Webmaster Code Create successfully');
         }
 
         return abort(500);
@@ -47,8 +46,7 @@ class WebmasterController extends Controller
         $update = $webmaster->update($validated);
 
         if($update) {
-            session()->flash('notif.success', 'Webmaster Code updated successfully!');
-            return redirect()->back();
+            return redirect()->back()->with('status', 'Webmaster Code Updated successfully');
         }
 
         return abort(500);

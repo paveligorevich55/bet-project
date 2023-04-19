@@ -72,8 +72,7 @@ class UserController extends Controller
 
         $update = $user->update($validated);
         if($update) {
-            session()->flash('notif.success', 'Avatar updated successfully!');
-            return redirect()->back();
+            return redirect(back())->with('status', 'Avatar updated successfully!');
         }
 
         return abort(500);

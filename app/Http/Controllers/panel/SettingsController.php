@@ -32,8 +32,7 @@ class SettingsController extends Controller
         $create = Settings::create($validated);
 
         if ($create) {
-            session()->flash('notif.success', 'Settings Create successfully');
-            return redirect()->back();
+            return redirect(back())->with('status', 'Settings Create successfully');
         }
 
         abort(500);
@@ -50,8 +49,7 @@ class SettingsController extends Controller
         $update = Settings::update($validated);
 
         if ($update) {
-            session()->flash('notif.success', 'Settings Updated successfully');
-            return redirect()->back();
+            return redirect(back())->with('status', 'Settings Updated successfully');
         }
 
         abort(500);

@@ -49,8 +49,7 @@ class CategoryController extends Controller
 
         if($create) {
             // add flash for the success notification
-            session()->flash('notif.success', 'Category created successfully!');
-            return redirect()->route('categories.index');
+            return redirect(route('category.index'))->with('status' , 'Category created successfully!');
         }
 
         return abort(500);
@@ -61,7 +60,7 @@ class CategoryController extends Controller
      */
     public function show(string $id): Response
     {
-        return response()->view('layouts.panel.categories.show', [
+        return response()->view('layouts.panel.pages.categories.show', [
             'category' => Category::findOrFail($id),
         ]);
     }
@@ -71,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('layouts.panel.categories.form', [
+        return response()->view('layouts.panel.pages.categories.form', [
             'category' => Category::findOrFail($id),
         ]);
     }
@@ -87,8 +86,7 @@ class CategoryController extends Controller
         $update = $category->update($validated);
 
         if($update) {
-            session()->flash('notif.success', 'Category updated successfully!');
-            return redirect()->route('categories.index');
+            return redirect(route('category.index'))->with('status' , 'Category updated successfully!');
         }
 
         return abort(500);
@@ -104,8 +102,7 @@ class CategoryController extends Controller
         $delete = $category->delete($id);
 
         if($delete) {
-            session()->flash('notif.success', 'Category deleted successfully!');
-            return redirect()->route('categories.index');
+            return redirect(route('category.index'))->with('status' , 'Category deleted successfully!');
         }
 
         return abort(500);
