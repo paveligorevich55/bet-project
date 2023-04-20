@@ -5,13 +5,14 @@ namespace App\Http\Controllers\panel;
 use App\Http\Controllers\Controller;
 use App\Models\Bookmaker;
 use App\Models\Link;
+use AshAllenDesign\ShortURL\Classes\Builder;
+use AshAllenDesign\ShortURL\Models\ShortURL;
 use Illuminate\Http\Request;
+use App\Helpers\Helper;
 use App\Http\Requests\Link\StoreRequest;
 use App\Http\Requests\Link\UpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
-use AshAllenDesign\ShortURL\Classes\Builder;
-use AshAllenDesign\ShortURL\Models\ShortURL;
 
 class LinkController extends Controller
 {
@@ -89,10 +90,11 @@ class LinkController extends Controller
      */
     public function edit(string $id): Response
     {
-        return response()->view('layouts.panel.pages.links.form', [
-            'link' => Link::findOrFail($id),
-            'bookmakers' => Bookmaker::all(),
-        ]);
+
+        $link = Link::findOrFail($id);
+        $bookmakers = Bookmaker::all();
+
+        return response()->view('layouts.panel.pages.links.form', compact(['link', 'bookmakers']));
     }
 
     /**
@@ -102,18 +104,24 @@ class LinkController extends Controller
     {
         $link = Link::findOrFail($id);
         $validated = $request->validated();
-        dd($request);
-//        $shortURL = ShortURL::where('url_key', $request->name)->first();
+
+        $old_name = $link->name;
 
         $update = $link->update($validated);
 
-//        $updateURL = $shortURL->update([
-//            'destination_url' => $request->link,
-//            'url_key' => $request->name,
-//        ]);
-
         if($update) {
-            // add flash for the success notification
+            $shortURL = ShortURL::where('url_key', $old_name)->first();
+            $old_default_short_url = $shortURL->default_short_url;
+
+            $new_default_short_url = Helper::changeUrlVariable($old_default_short_url, $old_name, $validated['name']);
+//
+            $shortURL->update([
+                'destination_url' => $validated['link'],
+                'url_key' => $validated['name'],
+                'default_short_url' => $new_default_short_url,
+
+            ]);
+
             return redirect()->route('link.index')->with('status', 'Link updated successfully!');
         }
 

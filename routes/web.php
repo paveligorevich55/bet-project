@@ -49,6 +49,8 @@ Route::group(['prefix' => 'dashboard',  'middleware' => ['auth']], function (){
     Route::resource('link', LinkController::class);
     Route::resource('promo', PromoController::class);
 
+
+
     Route::controller(\App\Http\Controllers\panel\SettingsController::class)->group(function (){
         Route::get('/settings', 'index')->name('settings');
         Route::put('/settings/{setting}/update', 'update')->name('settings.update');

@@ -22,8 +22,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:12',
-            'link' => 'required|string|min:5|max:250',
+            'name' => 'required',
+            'link' => 'required',
             'bookmaker_id' => 'required'
         ];
     }

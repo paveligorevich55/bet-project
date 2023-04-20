@@ -12,7 +12,6 @@ class Link extends Model
         'updated_at',
     ];
 
-
     public function bookmaker()
     {
         return $this->belongsTo('App\Models\Bookmaker');

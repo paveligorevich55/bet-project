@@ -100,7 +100,7 @@ class BookmakerController extends Controller
         $update = $bookmaker->update($validated);
 
         if($update) {
-            return redirect(route('bookmaker.index'))->with('status', 'Bookmaker updated successfully!');
+            return redirect()->route('bookmaker.index')->with('status', 'Bookmaker updated successfully!');
         }
 
         return abort(500);

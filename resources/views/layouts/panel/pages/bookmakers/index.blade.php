@@ -12,14 +12,14 @@
                         <tr>
                             <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Bookmaker</th>
                             <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Status</th>
-                            <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Link</th>
-                            <th class="px-6 py-3 font-bold uppercase text-xxs align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70">Edit</th>
-                            <th class="px-6 py-3 font-bold uppercase text-xxs align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70">Delete</th>
+
+                            <th class="px-6 py-3 font-bold uppercase text-center text-xxs align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70">Edit</th>
+                            <th class="px-6 py-3 font-bold uppercase text-center text-xxs align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70">Delete</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($bookmakers as $bookmaker)
-                            @foreach($links as $link)
+
                         <tr>
 
                             <td class="border-grey-200 p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
@@ -36,13 +36,7 @@
                             <td class="border-grey-200 p-2 leading-normal text-left align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
                                 <span class="py-2 px-3 text-xxs rounded-4 inline-block whitespace-nowrap text-left bg-gradient-to-tl from-green-500 to-green-900 align-baseline font-bold uppercase leading-none text-white">Online</span>
                             </td>
-                            <td class="border-grey-200 p-2 text-left align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                <span class="font-semibold leading-tight text-sm text-grey-400">
-                                    @if($link->bookmaker_id == $bookmaker->id)
-                                        {{$link->link}}
-                                    @endif
-                                </span>
-                            </td>
+
                             <td class="p-2 align-middle bg-transparent text-center border-b whitespace-nowrap shadow-transparent">
                                 <a href="{{ route('bookmaker.edit', [$bookmaker->id]) }}" class="font-semibold leading-tight text-xs text-slate-400"> Edit </a>
                             </td>
@@ -54,7 +48,7 @@
                                 </form>
                             </td>
                         </tr>
-                            @endforeach
+
                         @endforeach
 
                         </tbody>
