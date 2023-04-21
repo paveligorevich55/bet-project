@@ -4,6 +4,8 @@ namespace App\Http\Controllers\panel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Event;
+use AshAllenDesign\ShortURL\Models\ShortURL;
+use AshAllenDesign\ShortURL\Models\ShortURLVisit;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -21,6 +23,8 @@ class IndexController extends Controller
         $eventAttributes = Event::pluck('attribute')->unique();
         $mostFrequentAttributes = Event::select('attribute', DB::raw('COUNT(*) as count'))->groupBy('attribute')->orderBy('count', 'DESC')->limit(7)->get();
         $mostFrequentDevices = Event::select('device', DB::raw('COUNT(*) as count'))->groupBy('device')->orderBy('count', 'DESC')->limit(7)->get();
+
+        $clicks = ShortURLVisit::where('created_at', [Carbon::now()->startOfDay(), Carbon::now()->endOfDay()])->count();
 
         $referralFilters = ['google', 'yandex', 'bing', 'yahoo', 'Direct'];
 
@@ -69,6 +73,7 @@ class IndexController extends Controller
 
         return response()->view('dashboard', compact([
             'labels',
+            'clicks',
             'dataOrganic',
             'dataReferral',
             'dataDirect',

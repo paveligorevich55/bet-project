@@ -42,7 +42,7 @@ class ProfileController extends Controller
         $update = $userProfile->update($validated);
 
         if($update) {
-            return redirect(back())->with('status', 'User Profile updated successfully!');
+            return redirect()->back()->with('status', 'User Profile updated successfully!');
         }
 
         return abort(500);

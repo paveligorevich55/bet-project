@@ -86,9 +86,9 @@
                                 <div class="flex flex-wrap -mx-3">
                                     <div class="flex-none w-2/3 max-w-full px-3">
                                         <div>
-                                            <p class="mb-0 font-sans font-semibold leading-normal text-sm">Pages/Session</p>
+                                            <p class="mb-0 font-sans font-semibold leading-normal text-sm">Clicks on link</p>
                                             <h5 class="mb-0 font-bold dark:text-white">
-                                                1.76
+                                                {{$clicks}}
 {{--                                                <span class="leading-normal text-sm font-weight-bolder text-lime-500">+5%</span>--}}
                                             </h5>
                                         </div>
